@@ -17,7 +17,7 @@
 	Questions & comments please send to info@html-form-guide.com
   -------------------------------------------------------------------------  
 */
-
+  
 /**
 * Carries information about each of the form validations
 */
@@ -48,7 +48,7 @@ define("E_VAL_ALNUM_S_CHECK_FAILED","Please provide an alpha-numeric input for %
 define("E_VAL_NUM_CHECK_FAILED","Please provide numeric input for %s");
 define("E_VAL_ALPHA_CHECK_FAILED","Please provide alphabetic input for %s");
 define("E_VAL_ALPHA_S_CHECK_FAILED","Please provide alphabetic input for %s");
-define("E_VAL_EMAIL_CHECK_FAILED","Please provide a valida email address");
+define("E_VAL_EMAIL_CHECK_FAILED","Please provide a valid email address");
 define("E_VAL_LESSTHAN_CHECK_FAILED","Enter a value less than %f for %s");
 define("E_VAL_GREATERTHAN_CHECK_FAILED","Enter a value greater than %f for %s");
 define("E_VAL_REGEXP_CHECK_FAILED","Please provide a valid input for %s");
@@ -237,6 +237,27 @@ class FormValidator
 		return preg_match("/^[_\.0-9a-zA-Z-]+@([0-9a-zA-Z][0-9a-zA-Z-]+\.)+[a-zA-Z]{2,6}$/i", $email);
 	}
 
+	function validate_for_alpha_input($input_value,&$validation_success)
+	{
+		
+		$more_validations=true;
+		$validation_success = true;
+		if(strlen($input_value)>0)
+		{
+			
+			if(false == ctype_alpha($input_value))
+			{
+				$validation_success = false;
+				$more_validations=false;
+			}
+		}
+		else
+		{
+			$more_validations=false;
+		}
+		return $more_validations;
+	}
+
 	function validate_for_numeric_input($input_value,&$validation_success)
 	{
 		
@@ -421,7 +442,7 @@ class FormValidator
 
 			case 'alpha':
 						{
-							$bret= $this->test_datatype($input_value,"[^A-Za-z]");
+							$bret= $this->test_datatype($input_value,"[^a-zA-Z]");
 							if(false == $bret)
 							{
 								$default_error_message = sprintf(E_VAL_ALPHA_CHECK_FAILED,$variable_name);

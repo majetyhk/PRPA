@@ -611,6 +611,7 @@ class FGMembersite
         
         $validator = new FormValidator();
         $validator->addValidation("name","req","Please fill in Name");
+        $validator->addValidation("name","alpha_s","Please use only alphabets in Name");
         $validator->addValidation("email","email","The input for Email should be a valid email value");
         $validator->addValidation("email","req","Please fill in Email");
         $validator->addValidation("username","req","Please fill in UserName");
