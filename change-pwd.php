@@ -91,7 +91,7 @@ Uses the excellent form validation script from JavaScript-coder.com-->
 </script>
 
 <p>
-<a href='login-home.php'>Home</a>
+<a href='forms.php'>Home</a>
 </p>
 
 </div>
