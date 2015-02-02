@@ -61,7 +61,7 @@ if(isset($_POST['submitted']))
 
                 <div class='container'>
                     <label for='email' >Email Address*:</label><br/>
-                    <input type='text' name='email' id='email' value='<?php echo $fgmembersite->SafeDisplay('email') ?>' maxlength="50" /><br/>
+                    <input type='text' name='email' id='email' value='<?php echo $fgmembersite->SafeDisplay('email')?>' maxlength="50" /><br/>
                     <span id='register_email_errorloc' class='error'></span>
                 </div>
 
@@ -100,7 +100,7 @@ if(isset($_POST['submitted']))
                 frmvalidator.addValidation("name","req","Please provide your name");
                 frmvalidator.addValidation("name","alpha","Please provide a valid name");
                 frmvalidator.addValidation("email","req","Please provide your email address");
-                frmvalidator.addValidation("email","email","Please provide a valid email address");
+                //frmvalidator.addValidation("email","email","Please provide a valid email address");
                 frmvalidator.addValidation("username","req","Please provide a username");
                 frmvalidator.addValidation("password","req","Please provide a password");
             </script>

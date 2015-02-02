@@ -234,7 +234,12 @@ class FormValidator
 
 	function validate_email($email) 
 	{
-		return preg_match("/^[_\.0-9a-zA-Z-]+@([0-9a-zA-Z][0-9a-zA-Z-]+\.)+[a-zA-Z]{2,6}$/i", $email);
+		if(filter_var($email,FILTER_VALIDATE_EMAIL))
+			return true;
+		else
+			return false;
+
+	//return preg_match("/^[_\.0-9a-zA-Z-]+@([0-9a-zA-Z][0-9a-zA-Z-]+\.)+[a-zA-Z]{2,6}$/i", $email);
 	}
 
 	function validate_for_alpha_input($input_value,&$validation_success)
