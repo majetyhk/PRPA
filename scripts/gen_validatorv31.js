@@ -361,7 +361,7 @@ function vset_validate()
 }
 function validateEmail(email)
 {
-    var splitted = email.match("^(.+)@(.+)$");
+    var splitted = email.match("^([0-9A-Za-z _-.]+)@[0-9A-Za-z](.+)$");
     if(splitted == null) return false;
     if(splitted[1] != null )
     {
