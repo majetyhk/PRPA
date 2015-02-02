@@ -25,8 +25,8 @@ if(isset($_POST['submitted']))
    if($fgmembersite->RegisterUser())
    {
         $fgmembersite->RedirectToURL("thank-you.html");
-   }
-}
+   
+}}
 ?>
 <!--********************************************************************-->
 
