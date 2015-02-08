@@ -5,7 +5,7 @@
 
 <body>
 <center>
-<h2 >Form Submission Success</h2>
+<h2 >Your Form has been Submitted Successfully</h2>
 <a href="applnform.php">Download the application</a><br><br>
 
 <a href="index.php">Logout</a>
