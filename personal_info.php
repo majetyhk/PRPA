@@ -24,29 +24,30 @@ $t1 = $fgmembersite->UserFullName();
 
 $sql2="select id_user from fgusers3 where username='$t1'";
 $result2=mysql_query($sql2) or die(mysql_error());
-$temp='';
+$applicationNumber='';
 while($row = mysql_fetch_array($result2))
   {
 	  if($row['id_user'] >= 1 && $row['id_user'] < 10)
 		  {
 			//echo "<h2>Your Application number is DM13D00$row[id]</h2>";
-			$temp='DM14D00'.$row['id_user'];
+			$applicationNumber='DM14D00'.$row['id_user'];
 		  }
 	  else if($row['id_user'] >= 10 && $row['id_user'] < 100)
 		  {
 			//echo "<h2>Your Application number is DM13D0$row[id]</h2>";
-			$temp='DM14D0'.$row['id_user'];
-			//echo "$temp";
+			$applicationNumber='DM14D0'.$row['id_user'];
+			//echo "$applicationNumber";
 		  }
 	  else
 		  {
 			//echo "<h2>Your Application number is DM13D$row[id]</h2>";
-			$temp='DM14D'.$row['id_user'];
+			$applicationNumber='DM14D'.$row['id_user'];
 		  }
 		  
 
   }
-
+//personal email!=Alternate Email
+//
 if($_POST["Full_Name"] || $_POST["gender"] || $_POST["date1"]  ||$_POST["fname"] || $_POST["Nationality"] || $_POST["Marital_status"] || $_POST["Physically_challenged"] || $_POST["community"] || $_POST["pemail"] || $_POST["aemail"] || $_POST["Temp_Address"] || $_POST["T_District"] || $_POST["T_state"] || $_POST["T_pincode"] || $_POST["T_phone_number"] ||$_POST["T_mobile_number"] || $_POST["perm_Address"] || $_POST["P_District"] || $_POST["P_state"] || $_POST["P_pincode"] || $_POST["P_phone_number"] ||$_POST["P_mobile_number"])
 {
 	if($_POST['date1'])
@@ -61,7 +62,7 @@ if($_POST["Full_Name"] || $_POST["gender"] || $_POST["date1"]  ||$_POST["fname"]
     $dob = date("Y-m-d", strtotime($_POST['date1']));
     $sql="insert into  personal_info(user_name,App_no,Full_Name,gender,dob,age,fname,Nationality,Marital_status,Physically_challenged,community,Minority,pemail,aemail,Temp_Address,T_District,T_state,T_pincode,T_phone_number,T_mobile_number,perm_Address,P_District,P_state,P_pincode,P_phone_number,P_mobile_number) values 
 	
-('$t1','$temp','$_POST[Full_Name]' , '$_POST[gender]' , '$dob' , '$age' ,'$_POST[fname]' , '$_POST[Nationality]' , '$_POST[Marital_status]' , '$_POST[Physically_challenged]' , '$_POST[community]' ,'$_POST[Minority]' , '$_POST[pemail]' , '$_POST[aemail]','$_POST[Temp_Address]' , '$_POST[T_District]' , '$_POST[T_state]' , '$_POST[T_pincode]', '$_POST[T_phone_number]' , '$_POST[T_mobile_number]' , '$_POST[perm_Address]' , '$_POST[P_District]' , '$_POST[P_state]' , '$_POST[P_pincode]' , '$_POST[P_phone_number]' , '$_POST[P_mobile_number]')";
+('$t1','$applicationNumber','$_POST[Full_Name]' , '$_POST[gender]' , '$dob' , '$age' ,'$_POST[fname]' , '$_POST[Nationality]' , '$_POST[Marital_status]' , '$_POST[Physically_challenged]' , '$_POST[community]' ,'$_POST[Minority]' , '$_POST[pemail]' , '$_POST[aemail]','$_POST[Temp_Address]' , '$_POST[T_District]' , '$_POST[T_state]' , '$_POST[T_pincode]', '$_POST[T_phone_number]' , '$_POST[T_mobile_number]' , '$_POST[perm_Address]' , '$_POST[P_District]' , '$_POST[P_state]' , '$_POST[P_pincode]' , '$_POST[P_phone_number]' , '$_POST[P_mobile_number]')";
     $result=mysql_query($sql) or die(mysql_error());	
 echo "<script>
 
