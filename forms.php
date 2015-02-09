@@ -352,7 +352,7 @@ if(!$fgmembersite->CheckLogin())
 	<p><a href='change-pwd.php'>Change password</a></p>
 	</div>
 	<div align="center">
-	<?php print "\n<a href='logout.php'>Logout</a><br>\n";?>
+		<?php print "\n<a href='logout.php'>Logout</a><br>\n";?>
 	</div>
 
 
@@ -368,119 +368,155 @@ if(!$fgmembersite->CheckLogin())
 	<tr>
 		<td width="40%" valign="top">Name<font color=red>*</font> :</td>
 		<td width="60%" colspan="2">
-		         <input required="required" onkeypress="return isAlpha(event,errorName);" ondrop="return false;" onpaste="return false;" name='Full_Name' type=text maxlength=50 id='Full_Name' value="<?php if(isset($Full_Name)) echo $Full_Name;?>" size=40 title= 'Name as recorded in Matriculation Certificate'><span id="errorName" style="color: Red; display: none">* Special Characters & integers are not allowed</span><br><span class=note><b><u>Note 1</u>:</b> Name as recorded in the Matriculation/Secondary Examination Certificate.<br><b><u>Note 2</u>:</b> Please do not use any prefix such as Mr. or Ms. etc.</span>
+			<input required="required" onkeypress="return isAlpha(event,errorName);" ondrop="return false;" onpaste="return false;" name='Full_Name' type=text maxlength=50 id='Full_Name' value="<?php if(isset($Full_Name)) echo $Full_Name;?>" size=40 title= 'Name as recorded in Matriculation Certificate'><span id="errorName" style="color: Red; display: none">* Special Characters & integers are not allowed</span><br><span class=note><b><u>Note 1</u>:</b> Name as recorded in the Matriculation/Secondary Examination Certificate.<br><b><u>Note 2</u>:</b> Please do not use any prefix such as Mr. or Ms. etc.</span>
 		</td>
 	</tr>
 	<tr>
-	        <td valign="top">
-	          Gender<font color=red>*</font> :        </td>
-	        <td colspan="2">
-	        <select name='gender' id='gender' >
-	        <option value='Male' <?php if(isset($gender)&&$gender=='Male') echo "selected"; ?>>Male</option>
-	        <option value='Female' <?php if(isset($gender)&&$gender=='Female') echo "selected"; ?>
-	        >Female</option></select>        </td></tr>
+	    <td valign="top">
+	    	Gender<font color=red>*</font> :       
+	    </td>
+	    <td colspan="2">
+		    <select name='gender' id='gender' >
+			    <option value='Male' <?php if(isset($gender)&&$gender=='Male') echo "selected"; ?>>Male</option>
+			    <option value='Female' <?php if(isset($gender)&&$gender=='Female') echo "selected"; ?>
+			    >Female</option>
+		    </select>        
+	    </td>
+	</tr>
 	      
-	      <tr>
-	        <td valign="top">
-	         Date Of Birth<font color=red>*</font> :        </td>
-	        <td colspan="2">
+	<tr>
+		<td valign="top">
+	    	Date Of Birth<font color=red>*</font> :        
+	    </td>
+		<td colspan="2">
+			<input type="text" id="date1" maxlength="10" name="date1" autocomplete="off" value="<?php if(isset($dob)) echo ($dob) ?>" onkeypress="return isNumber(event)"/>
+	       	<span class="note">[Please enter the date in (dd-mm-YYYY) format.]</span>
+		</td>
+	</tr>
+	       	      
+	<tr>
+		<td valign="top">
+	    	Father's / Husband's Name<font color=red>*</font> :        
+	    </td>
+		<td colspan="2">
+	        <input name=fname onkeypress="return isAlpha(event,errorFatherName);" ondrop="return false;" onpaste="return false;" type=text maxlength=30 size=40 id=fname value="<?php if(isset($fname)) echo $fname;?>"><span id="errorFatherName" style="color: Red; display: none">* Special Characters & integers are not allowed</span><br>
+	        <span class="note">[Please do not use any prefix such as Shri or Dr. etc.]</span>    
+	    </td>
+	</tr>
 
-	      <input type="text" id="date1" maxlength="10" name="date1" autocomplete="off" value="<?php if(isset($dob)) echo ($dob) ?>" onkeypress="return isNumber(event)"/>
-	       <span class="note">[Please enter the date in (dd-mm-YYYY) format.]</span> </td></tr>
-	       
-	      
-	 	<tr>
-	        <td valign="top">
-	         Father's / Husband's Name<font color=red>*</font> :        </td>
-	        <td colspan="2">
-	         <input name=fname onkeypress="return isAlpha(event,errorFatherName);" ondrop="return false;" onpaste="return false;" type=text maxlength=30 size=40 id=fname value="<?php if(isset($fname)) echo $fname;?>"><span id="errorFatherName" style="color: Red; display: none">* Special Characters & integers are not allowed</span><br>
-	        <span class="note">[Please do not use any prefix such as Shri or Dr. etc.]</span>        </td>
-	    </tr>
-	      <tr>
-	        <td>
-	         Nationality<font color=red>*</font> :        </td>
-	        <td colspan="2">
-	          <select name='Nationality' id='Nationality'> 
-	          <option value='Indian'<?php if(isset($nation)&&$nation=='Indian') echo "selected"; ?>>Indian</option>
-	          <option value='Outside India'<?php if(isset($nation)&&$nation=='Outside India') echo "selected"; ?>>Outside India</option>
-	          </select>          </td>
-	      </tr>
+	<tr>
+		<td>
+	    	Nationality<font color=red>*</font> :        
+		</td>
+	    <td colspan="2">
+	    	<select name='Nationality' id='Nationality'> 
+	        <option value='Indian'<?php if(isset($nation)&&$nation=='Indian') echo "selected"; ?>>Indian</option>
+	        <option value='Outside India'<?php if(isset($nation)&&$nation=='Outside India') echo "selected"; ?>>Outside India</option>
+	        </select> 
+	    </td>
+	</tr>
 		  <!-- Modified 10 Jan 2011-->
-		        <tr>
-	        <td>
-	         Marital Status<font color=red>*</font> :        </td>
-	        <td colspan="2">
-	          <select name='Marital_status' id='Marital_status'>
-	          <option value='null' >Select Marital Status</option>
-	          <option value='Unmarried' <?php if(isset($marital)&&$marital=='Unmarried') echo "selected"; ?>>Single</option>
-	          <option value='Married' <?php if(isset($marital)&&$marital=='Married') echo "selected"; ?>>Married</option></select>            </td>
-	      </tr>
+	<tr>
+		<td>
+	    	Marital Status<font color=red>*</font> :       
+	    </td>
+	    <td colspan="2">
+	    	<select name='Marital_status' id='Marital_status'>
+	        <option value='null' >Select Marital Status</option>
+	        <option value='Unmarried' <?php if(isset($marital)&&$marital=='Unmarried') echo "selected"; ?>>Single</option>
+	        <option value='Married' <?php if(isset($marital)&&$marital=='Married') echo "selected"; ?>>Married</option></select>        
+	    </td>
+	</tr>
 		  <!-- Modified 10 Jan 2011-->
-	      <tr>
-	        <td>
-	         Physically Challenged :        </td>
-	        <td>
-	      <select name='Physically_challenged' id='Physically_challenged'>      <option value='No' <?php if(isset($pc)&&$pc=='No') echo "selected"; ?>>No</option>
-	      <option value='Yes'<?php if(isset($pc)&&$pc=='Yes') echo "selected"; ?>>Yes</option></select>  </tr>
-	      <tr>
-	        <td valign="top">
-	         Community<font color=red>*</font> :        </td>
-	        <td colspan="2">
-	          <select name="community" id="community" >
-	             <option value='General' <?php if(isset($minority)&&$minority=='General') echo "selected"; ?>>General</option>
-	             <option value='OBC' <?php if(isset($minority)&&$minority=='OBC') echo "selected"; ?>>OBC</option>
-	             <option value='SC' <?php if(isset($minority)&&$minority=='SC') echo "selected"; ?>>SC</option>
-	             <option value='ST' <?php if(isset($minority)&&$minority=='ST') echo "selected"; ?>>ST</option>          </select><br>
-	          <span class="note">[Candidates belonging to OBCs but
-	          coming in the ' Creamy Layer ' and thus not being entitled to
-	          OBC reservation should indicate their community as ' General ']</span>        </td>
-			  </tr>
+	<tr>
+		<td>
+	    	Physically Challenged :
+	    </td>
+	    <td>
+	    	<select name='Physically_challenged' id='Physically_challenged'>      <option value='No' <?php if(isset($pc)&&$pc=='No') echo "selected"; ?>>No</option>
+			<option value='Yes'<?php if(isset($pc)&&$pc=='Yes') echo "selected"; ?>>Yes</option></select> 
+		</td>
+	</tr>
+
+	<tr>
+	    <td valign="top">
+	    	Community<font color=red>*</font> :        
+	    </td>
+	    <td colspan="2">
+	    	<select name="community" id="community" >
+	        	<option value='General' <?php if(isset($minority)&&$minority=='General') echo "selected"; ?>>General</option>
+	            <option value='OBC' <?php if(isset($minority)&&$minority=='OBC') echo "selected"; ?>>OBC</option>
+	            <option value='SC' <?php if(isset($minority)&&$minority=='SC') echo "selected"; ?>>SC</option>
+	            <option value='ST' <?php if(isset($minority)&&$minority=='ST') echo "selected"; ?>>ST</option>          </select><br>
+	          	<span class="note">[Candidates belonging to OBCs but
+	         	coming in the ' Creamy Layer ' and thus not being entitled to
+	          	OBC reservation should indicate their community as ' General ']</span>        
+		</td>
+	</tr>
 			  	  
-		        <tr>
-	        <td>
-	         If you belong to Minority :</td>
-	        <td nowrap="nowrap">
+	<tr>
+		<td>
+	    	If you belong to Minority :
+		</td>
+		<td nowrap="nowrap">
 	  		<select name="Minority" id="Minority" onChange="setMinotry(this.value)">
 			<option value="No" selected=selected>No</option>
 			<option value="Yes" >Yes</option>
 			</select>
-			</td>
-	      </tr>
-		  <tr>
-	        <td width="40%" valign="top">
-	          Personal Email-ID<font color=red>*</font> :        </td>
-	        <td width="60%" colspan="2">
-	         <input name=pemail type="email" maxlength=30 id="pemail" value="<?php if(isset($pemail)) echo $pemail;?>" size=40 title='Personal Email-ID' ><br>
-	     	</td>
-	      </tr>
-		<tr>
-	        <td width="40%" valign="top">
-	          Alternate Email-ID :        </td>
-	        <td width="60%" colspan="2">
-	         <input name=aemail type="email" maxlength=30 id="aemail" onblur="checkMails()" value="<?php if(isset($aemail)) echo $aemail;?>" size=40 title='Alternate Email-ID' ><br>        </td>
-	      </tr>
-	      <tr class="formfieldheading">
-	        <td colspan="3">
-	         <strong>Present Address</strong>        </td>
-	      </tr>
-	      <tr>
-	        <td>&nbsp;</td>
-	        <td colspan="2">
-	         <span class="note">
-	          [Do not enter your name again in the address field]         </span>        </td>
-	      </tr>
-	      <tr>
-	        <td>
-	         Address<font color=red>*</font> :        </td>
-	        <td colspan="2">
-	        <input name=Temp_Address type=text id=Temp_Address size=40 value="<?php if(isset($Temp_Address)) echo $Temp_Address;?>" maxlength=250 >        </td>
-	      </tr>
-	      <tr>
-	        <td>
-	          District/City<font color=red>*</font> :        </td>
-	        <td colspan="2">
-	        <input name=T_District type=text id=T_District size=40 value="<?php if(isset($T_District)) echo $T_District;?>" maxlength=50 onkeypress='return alphaonly(event,this)'>        </td>
-	      </tr>
+		</td>
+	</tr>
+
+	<tr>
+		<td width="40%" valign="top">
+	    	Personal Email-ID<font color=red>*</font> :        
+		</td>
+	    <td width="60%" colspan="2">
+	    	<input name=pemail type="email" maxlength=30 id="pemail" value="<?php if(isset($pemail)) echo $pemail;?>" size=40 title='Personal Email-ID' ><br>
+		</td>
+	</tr>
+
+	<tr>
+		<td width="40%" valign="top">
+	    	Alternate Email-ID :        
+		</td>
+	    <td width="60%" colspan="2">
+	    	<input name=aemail type="email" maxlength=30 id="aemail" onblur="checkMails()" value="<?php if(isset($aemail)) echo $aemail;?>" size=40 title='Alternate Email-ID' ><br>        
+	   	</td>
+	</tr>
+
+	<tr class="formfieldheading">
+		<td colspan="3">
+	    	<strong>Present Address</strong>        
+		</td>
+	</tr>
+
+	<tr>
+		<td>&nbsp;</td>
+	    <td colspan="2">
+	    	<span class="note">
+				[Do not enter your name again in the address field]         
+			</span>        
+		</td>
+	</tr>
+
+	<tr>
+		<td>
+	    	Address<font color=red>*</font> :        
+	    </td>
+	    <td colspan="2">
+	    	<input name=Temp_Address type=text id=Temp_Address size=40 value="<?php if(isset($Temp_Address)) echo $Temp_Address;?>" maxlength=250 >        
+	    </td>
+	</tr>
+
+	<tr>
+		<td>
+	    	District/City<font color=red>*</font> :        
+		</td>
+		<td colspan="2">
+	    	<input name=T_District type=text id=T_District size=40 value="<?php if(isset($T_District)) echo $T_District;?>" maxlength=50 onkeypress='return alphaonly(event,this)'>        
+		</td>
+	</tr>
+	
 	      <tr>
 	        <td>
 	                State/UT<font color=red>*</font> :        </td>
