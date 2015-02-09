@@ -386,17 +386,17 @@ if(!$fgmembersite->CheckLogin())
 	         Date Of Birth<font color=red>*</font> :        </td>
 	        <td colspan="2">
 
-	      <input type="text" id="date1" name="date1" autocomplete="off" value="<?php if(!isset($dob)) echo "13-01-1998"; else echo "2012-05-14" ?>" onkeypress="return isNumber(event)"/>
+	      <input type="text" id="date1" maxlength="10" name="date1" autocomplete="off" value="<?php if(isset($dob)) echo ($dob) ?>" onkeypress="return isNumber(event)"/>
 	       <span class="note">[Please enter the date in (dd-mm-YYYY) format.]</span> </td></tr>
 	       
 	      
-	 <tr>
+	 	<tr>
 	        <td valign="top">
 	         Father's / Husband's Name<font color=red>*</font> :        </td>
 	        <td colspan="2">
 	         <input name=fname onkeypress="return isAlpha(event,errorFatherName);" ondrop="return false;" onpaste="return false;" type=text maxlength=30 size=40 id=fname value="<?php if(isset($fname)) echo $fname;?>"><span id="errorFatherName" style="color: Red; display: none">* Special Characters & integers are not allowed</span><br>
 	        <span class="note">[Please do not use any prefix such as Shri or Dr. etc.]</span>        </td>
-	      </tr>
+	    </tr>
 	      <tr>
 	        <td>
 	         Nationality<font color=red>*</font> :        </td>
@@ -435,7 +435,7 @@ if(!$fgmembersite->CheckLogin())
 	             <option value='ST' <?php if(isset($minority)&&$minority=='ST') echo "selected"; ?>>ST</option>          </select><br>
 	          <span class="note">[Candidates belonging to OBCs but
 	          coming in the ' Creamy Layer ' and thus not being entitled to
-	          OBC reservation should indicate their community as ' General ']          </span>        </td>
+	          OBC reservation should indicate their community as ' General ']</span>        </td>
 			  </tr>
 			  	  
 		        <tr>
@@ -452,14 +452,14 @@ if(!$fgmembersite->CheckLogin())
 	        <td width="40%" valign="top">
 	          Personal Email-ID<font color=red>*</font> :        </td>
 	        <td width="60%" colspan="2">
-	         <input name=pemail type="email" maxlength=30 id=pemail value="<?php if(isset($pemail)) echo $pemail;?>" size=40 title='Personal Email-ID' ><br>
+	         <input name=pemail type="email" maxlength=30 id="pemail" value="<?php if(isset($pemail)) echo $pemail;?>" size=40 title='Personal Email-ID' ><br>
 	     	</td>
 	      </tr>
 		<tr>
 	        <td width="40%" valign="top">
 	          Alternate Email-ID :        </td>
 	        <td width="60%" colspan="2">
-	         <input name=aemail type="email" maxlength=30 id=aemail value="<?php if(isset($aemail)) echo $aemail;?>" size=40 title='Alternate Email-ID' ><br>        </td>
+	         <input name=aemail type="email" maxlength=30 id="aemail" onblur="checkMails()" value="<?php if(isset($aemail)) echo $aemail;?>" size=40 title='Alternate Email-ID' ><br>        </td>
 	      </tr>
 	      <tr class="formfieldheading">
 	        <td colspan="3">
@@ -572,19 +572,19 @@ if(!$fgmembersite->CheckLogin())
 	        <td>
 	          Pincode<font color=red>*</font> :        </td>
 	        <td colspan="2">
-	        <input name=T_pincode type=text id=T_pincode size=6 maxlength=6 value="<?php if(isset($T_pincode)) echo $T_pincode;?>" onkeypress="return isNumber(event)">        </td>
+	        <input name=T_pincode type="text" id="T_pincode" size=6 maxlength=6 value="<?php if(isset($T_pincode)) echo $T_pincode;?>" onkeypress="return isPinCode(event)" ><span id="errorPinCode" style="color: Red; display: none">* Pin Code Must be of length 6 </span></td>
 	      </tr>
 		        <tr>
 	        <td>
 	          Phone with Area Code :        </td>
 	        <td colspan="2">
-	 <input name=T_phone_number type=text id=T_phone_number value="<?php if(isset($T_phone_number)) echo $T_phone_number;?>" onkeypress="return isNumber(event)">        </td>
+	 +91-<input name=T_phone_number size="15" maxlength="15" type=text id=T_phone_number value="<?php if(isset($T_phone_number)) echo $T_phone_number;?>" onkeypress="return isPinCode(event)"></td>
 	      </tr>
 	      <tr>
 	        <td>
 	          Mobile :        </td>
 	        <td colspan="2">
-	        <input name=T_mobile_number type=text id=T_mobile_number value="<?php if(isset($T_mobile_number)) echo $T_mobile_number;?>" onkeypress="return isNumber(event)">        </td>
+	        +91-<input name=T_mobile_number size="10" maxlength="10" type=text id=T_mobile_number value="<?php if(isset($T_mobile_number)) echo $T_mobile_number;?>" onkeypress="return isPinCode(event)">        </td>
 	      </tr>
 	      <tr>
 	      </tr>
@@ -728,7 +728,7 @@ if(!$fgmembersite->CheckLogin())
 	</div>
 
 	    <div >
-	  <h2 id="savePersonInfo">Academic Info</h2>
+	  <h2 >Academic Info</h2>
 	 <br>
 	  <form name="form3" method="post" action="academic_info.php">
 	 <p style="text-align:center;font-family:arial;color:black;font-size:24px;">Qualifications and Experience.</p>
@@ -750,35 +750,27 @@ if(!$fgmembersite->CheckLogin())
 	                    <td width="15%"><b>Degree(with discipline)</b></td>
 	                    <td width="8%"><b>%/CGPA/CPI</b></td>
 	                    <td width="9%"><b>Grade Format</b></td>
-	                    <!--<td width="15%"><b>Subjects taken</b></td>-->
 	                    <td width="10%"><b>Year of passing</b></td>
-	                    <!--<td width="10%"><b>Status</b></td>-->
 	                </tr>
 	                <tr>
 	                    <td width="13%">Class 10th OR Equi.<font color="red"> *</font></td>
-	                    <td width="20%"><input class="validate[required]" type="text" name="univ_10" id="univ_10" value="<?php if(isset($univ_10)) echo $univ_10;?>" style="width:95%" maxlength="95" title="95 Characters" /></td>
+	                    <td width="20%"><input required="required" class="validate[required]" type="text" name="univ_10" id="univ_10" value="<?php if(isset($univ_10)) echo $univ_10;?>" style="width:95%" maxlength="95" onkeypress="return isAlpha(event,errorTenthClass);" title="95 Characters" /><span id="errorTenthClass" style="color: Red; display: none">* Special Characters & integers are not allowed</span></td>
 	                    <td width="15%"><input class="validate[required]" type="text" name="degree_10" id="degree_10" value="Class 10th OR Equi." style="width:93%"  readonly/></td>
 	                    
-	                         <td width="9%"><select name="grade_10" id="grade_10" class="validate[required]">
+	                    <td width="9%"><select name="grade_10" id="grade_10" class="validate[required]">
 					   <option value="MAR-100"<?php if(isset($grade_10)&&$grade_10=="MAR-100") echo "selected"; ?>>% out of 100</option> 
 					   <option value="CGP-10"<?php if(isset($grade_10)&&$grade_10=="CGP-10") echo "selected"; ?>>CGPA out of 10</option>
 					   <option value="CPI-4"<?php if(isset($grade_10)&&$grade_10=="CPI-4") echo "selected"; ?>>CPI out of 4</option>
 					   <option value="CPI-8"<?php if(isset($grade_10)&&$grade_10=="CPI-8") echo "selected"; ?>>CPI out of 8</option>
-	<?php 
-	?>
 					   </select>
-			</td>
+					   </td>
 	                    
 	                    <td width="8%"><input type="text" name="marks_10" id="marks_10" value="<?php if(isset($marks_10))echo $marks_10;?>" style="width:87%" maxlength="6" onkeypress="return isPercentage(event)"  onblur="check(event);"/></td> 
-
-	               
-
-	                    <td width="10%"><input class="validate[required]" type="text" name="year_10" id="year_10" value="<?php if(isset($year_10)) echo $year_10;?>" style="width:92%" maxlength="95" title="95 Characters" /></td>
-	                  
+	                    <td width="10%"><input type="text" maxlength="4" name="year_10" id="year_10" value="<?php if(isset($year_10)) echo $year_10;?>" style="width:92%" onkeypress="return isPinCode(event)" title="4 Characters" /></td>    
 	                </tr>
 	                <tr>
 	                    <td width="13%">Class 12th OR Equi.<font color="red"> *</font></td>
-	                    <td width="20%"><input class="validate[required]" type="text" name="univ_12" id="univ_12" value="<?php if(isset($univ_12)) echo $univ_12;?>" style="width:95%" maxlength="95" title="95 Characters" /></td>
+	                    <td width="20%"><input required="required" class="validate[required]" type="text" name="univ_12" id="univ_12" value="<?php if(isset($univ_12)) echo $univ_12;?>" style="width:95%" maxlength="95" title="95 Characters" onkeypress="return isAlpha(event,errorTwelfthClass);" /><span id="errorTwelfthClass" style="color: Red; display: none">* Special Characters & integers are not allowed</span></td>
 	                    <td width="15%"><input class="validate[required]" type="text" name="degree_12" id="degree_12" value="Class 12th OR Equi." style="width:93%" readonly/></td>
 	                    
 	                    	<td width="9%"><select name="grade_12" id="grade_12" class="validate[required]">
@@ -793,103 +785,54 @@ if(!$fgmembersite->CheckLogin())
 	               </td>
 	                    
 	                    <td width="8%"><input  class="validate[required]" type="text" name="marks_12" id="marks_12" value="<?php if(isset($marks_12)) echo $marks_12;?>" style="width:87%" maxlength="6" onkeypress="return isPercentage(event)" onblur="check1(event);"/></td>
-
-		
-
-	                    <td width="10%"><input class="validate[required]" type="text" name="year_12" id="year_12" value="<?php if(isset($year_12)) echo $year_12;?>" style="width:92%" maxlength="95" title="95 Characters" /></td>
+	                    <td width="10%"><input type="text" maxlength="4" name="year_12" id="year_12" value="<?php if(isset($year_12)) echo $year_12;?>" style="width:92%" title="4 Characters" onkeypress="return isPinCode(event)"/></td>
 	                     
 	                </tr>
 
 	                <tr>
 	                    <td width="13%">Bachelor Degree or Equi.<font color="red"> *</font></td>
-	                    <td width="20%"><input class="validate[required]" type="text" name="bd_univ" id="bd_univ" value="<?php if(isset($univ_bd)) echo $univ_bd;?>" style="width:95%" maxlength="95" title="95 Characters" /></td>
-	                    <td width="15%"><input class="validate[required]" type="text" name="bd_degree" id="bd_degree" value="<?php if(isset($degree_bd)) echo $degree_bd;?>" style="width:93%" maxlength="45" title="45 Characters" /></td>
-	                    
-	                    	 <td width="9%"><select name="bd_grade" id="bd_grade" class="validate[required]">
-	                                   <option value="0">-- Select --</option>
-	        
-	        <option value="MAR-100"<?php if(isset($grade_bd)&&$grade_bd=="MAR-100") echo "selected"; ?>>% out of 100</option>
-					
-					
-		  <option value="CGP-10"<?php if(isset($grade_bd)&&$grade_bd=="CGP-10") echo "selected"; ?>>CGPA out of 10</option>
-	              
-	                      		
-	        		<option value="CPI-4"<?php if(isset($grade_bd)&&$grade_bd=="CPI-4") echo "selected"; ?>>CPI out of 4</option>
-		 	
-	        		<option value="CPI-8"<?php if(isset($grade_bd)&&$grade_bd=="CPI-8") echo "selected"; ?>>CPI out of 8</option>
-	              
-	             </select>
-	              </td>
-	                    
-	                    
+	                    <td width="20%"><input class="validate[required]" type="text" name="bd_univ" id="bd_univ" value="<?php if(isset($univ_bd)) echo $univ_bd;?>" style="width:95%" maxlength="95" title="95 Characters" onkeypress="return isAlpha(event,errorBachelor);"/><span id="errorBachelor" style="color: Red; display: none">* Special Characters & integers are not allowed</span></td>
+	                    <td width="15%"><input class="validate[required]" type="text" name="bd_degree" id="bd_degree" value="<?php if(isset($degree_bd)) echo $degree_bd;?>" style="width:93%" maxlength="45" title="45 Characters" onkeypress="return isAlpha(event,errorBachelorDegree);" /><span id="errorBachelorDegree" style="color: Red; display: none">* Special Characters & integers are not allowed</span></td>
+						<td width="9%"><select name="bd_grade" id="bd_grade" class="validate[required]">
+		                    <option value="0">-- Select --</option>
+		        			<option value="MAR-100"<?php if(isset($grade_bd)&&$grade_bd=="MAR-100") echo "selected"; ?>>% out of 100</option>
+			  				<option value="CGP-10"<?php if(isset($grade_bd)&&$grade_bd=="CGP-10") echo "selected"; ?>>CGPA out of 10</option>	
+		        			<option value="CPI-4"<?php if(isset($grade_bd)&&$grade_bd=="CPI-4") echo "selected"; ?>>CPI out of 4</option>
+		        			<option value="CPI-8"<?php if(isset($grade_bd)&&$grade_bd=="CPI-8") echo "selected"; ?>>CPI out of 8</option>
+	             			</select></td>
 	                    <td width="8%"><input class="validate[required]" type="text" name="bd_marks" id="bd_marks" value="<?php if(isset($marks_bd)) echo $marks_bd;?>" style="width:87%" maxlength="6" onkeypress="return isPercentage(event)" onblur="check2(event);"/></td>
-
-		
-
-	                    <td width="10%"><input class="validate[required]" type="text" name="bd_year" id="bd_year" value="<?php if(isset($year_bd)) echo $year_bd;?>" style="width:92%" maxlength="95" title="95 Characters" /></td>
-
+	                    <td width="10%"><input class="validate[required]" type="text" name="bd_year" id="bd_year" value="<?php if(isset($year_bd)) echo $year_bd;?>" style="width:92%" maxlength="4" title="4 Characters" onkeypress="return isPinCode(event)" /></td>
 	                </tr>
 	                <tr>
 	                    <td width="13%">Masters degree or Equi.</td>
-	                    <td width="20%"><input type="text" name="pg_univ" id="pg_univ" value="<?php if(isset($univ_pg)) echo $univ_pg;?>" style="width:95%" maxlength="95" title="95 Characters" "/></td>
-	                    <td width="15%"><input type="text" name="pg_degree" id="pg_degree" value="<?php if(isset($degree_pg)) echo $degree_pg;?>" style="width:93%" maxlength="45" title="45 Characters" "/></td>
-	                    
-	                     <td width="9%"><select name="pg_grade" id="pg_grade">
-	                                   <option value="0">-- Select --</option>
-		
-	        
-	        <option value="MAR-100"<?php if(isset($grade_pg)&&$grade_pg=="MAR-100") echo "selected"; ?>>% out of 100</option>
-					
-					
-		  <option value="CGP-10"<?php if(isset($grade_pg)&&$grade_pg=="CGP-10") echo "selected"; ?>>CGPA out of 10</option>
-	              
-	                      		
-	        		<option value="CPI-4"<?php if(isset($grade_pg)&&$grade_pg=="CPI-4") echo "selected"; ?>>CPI out of 4</option>
-		 	
-	        		<option value="CPI-8"<?php if(isset($grade_pg)&&$grade_pg=="CPI-8") echo "selected"; ?>>CPI out of 8</option>
-	        
-			 </select>
-	         </td>
-	                    
-	                    
+	                    <td width="20%"><input type="text" name="pg_univ" id="pg_univ" value="<?php if(isset($univ_pg)) echo $univ_pg;?>" style="width:95%" maxlength="95" title="95 Characters" onkeypress="return isAlpha(event,errorMasters);"/><span id="errorMasters" style="color: Red; display: none">* Special Characters & integers are not allowed</span></td>
+	                    <td width="15%"><input type="text" name="pg_degree" id="pg_degree" value="<?php if(isset($degree_pg)) echo $degree_pg;?>" style="width:93%" maxlength="45" title="45 Characters" onkeypress="return isAlpha(event,errorMastersDegree);" /><span id="errorMastersDegree" style="color: Red; display: none">* Special Characters & integers are not allowed</span></td>
+	                    <td width="9%"><select name="pg_grade" id="pg_grade">
+	                        <option value="0">-- Select --</option>
+	        				<option value="MAR-100"<?php if(isset($grade_pg)&&$grade_pg=="MAR-100") echo "selected"; ?>>% out of 100</option>
+		  					<option value="CGP-10"<?php if(isset($grade_pg)&&$grade_pg=="CGP-10") echo "selected"; ?>>CGPA out of 10</option>
+	        				<option value="CPI-4"<?php if(isset($grade_pg)&&$grade_pg=="CPI-4") echo "selected"; ?>>CPI out of 4</option>
+	        				<option value="CPI-8"<?php if(isset($grade_pg)&&$grade_pg=="CPI-8") echo "selected"; ?>>CPI out of 8</option>
+			 				</select>
+	        			</td>
 	                    <td width="8%"><input type="text" name="pg_marks" id="pg_marks" value="<?php if(isset($marks_pg)) echo $marks_pg;?>" style="width:87%" maxlength="5" onkeypress="return isPercentage(event)" onblur="check3(event);"/></td>
-		
-		  
-
-	                    <td width="10%"><input type="text" name="pg_year" id="pg_year" value="<?php if(isset($year_pg)) echo $year_pg;?>" style="width:92%" maxlength="95" title="95 Characters" /></td>
-	                   
+	                    <td width="10%"><input type="text" name="pg_year" id="pg_year" value="<?php if(isset($year_pg)) echo $year_pg;?>" style="width:92%" maxlength="4" title="4 Characters" onkeypress="return isPinCode(event)" /></td>
 	                </tr>
 
-			<tr>
+					<tr>
 	                    <td width="13%">Others</td>
-	                    <td width="20%"><input type="text" name="o_univ" id="o_univ" value="<?php if(isset($univ_o)) echo $univ_o;?>" style="width:95%" maxlength="95" title="95 Characters" /></td>
-	                    <td width="15%"><input type="text" name="o_degree" id="o_degree" value="<?php if(isset($degree_o)) echo $degree_o;?>" style="width:93%" maxlength="45" title="45 Characters" /></td>
-	                    
+	                    <td width="20%"><input type="text" name="o_univ" id="o_univ" value="<?php if(isset($univ_o)) echo $univ_o;?>" style="width:95%" maxlength="95" title="95 Characters" onkeypress="return isAlpha(event,errorOthers);" /><span id="errorOthers" style="color: Red; display: none">* Special Characters & integers are not allowed</span></td>
+	                    <td width="15%"><input type="text" name="o_degree" id="o_degree" value="<?php if(isset($degree_o)) echo $degree_o;?>" style="width:93%" maxlength="45" title="45 Characters" onkeypress="return isAlpha(event,errorOthersDegree);" /><span id="errorOthersDegree" style="color: Red; display: none">* Special Characters & integers are not allowed</span></td>
 	                    <td width="9%"><select name="o_grade" id="o_grade">
-	     <option value="0">-- Select --</option>
-	        
-	        
-	        <option value="MAR-100"<?php if(isset($grade_o)&&$grade_o=="MAR-100") echo "selected"; ?>>% out of 100</option>
-					
-					
-		  <option value="CGP-10"<?php if(isset($grade_o)&&$grade_o=="CGP-10") echo "selected"; ?>>CGPA out of 10</option>
-	              
-	                      		
-	        		<option value="CPI-4"<?php if(isset($grade_o)&&$grade_o=="CPI-4") echo "selected"; ?>>CPI out of 4</option>
-		 	
-	        		<option value="CPI-8"<?php if(isset($grade_o)&&$grade_o=="CPI-8") echo "selected"; ?>>CPI out of 8</option>
-	        
-	        
-	        
-	        </select>
-	        </td>
-	                    
+					    	<option value="0">-- Select --</option>
+	        				<option value="MAR-100"<?php if(isset($grade_o)&&$grade_o=="MAR-100") echo "selected"; ?>>% out of 100</option>
+							<option value="CGP-10"<?php if(isset($grade_o)&&$grade_o=="CGP-10") echo "selected"; ?>>CGPA out of 10</option>	
+	        				<option value="CPI-4"<?php if(isset($grade_o)&&$grade_o=="CPI-4") echo "selected"; ?>>CPI out of 4</option>
+			        		<option value="CPI-8"<?php if(isset($grade_o)&&$grade_o=="CPI-8") echo "selected"; ?>>CPI out of 8</option>    
+	        				</select>
+	        			</td>
 	                    <td width="8%"><input type="text" name="o_marks" id="o_marks" value="<?php if(isset($marks_o)) echo $marks_o;?>" style="width:87%" maxlength="5" onkeypress="return isPercentage(event)" onblur="check4(event);"/></td>
-
-		 
-
-	                    <td width="10%"><input type="text" name="o_year" id="o_year" value="<?php if(isset($year_o)) echo $year_o;?>" style="width:92%" maxlength="95" title="95 Characters" /></td>
-	                    
+	                    <td width="10%"><input type="text" name="o_year" id="o_year" value="<?php if(isset($year_o)) echo $year_o;?>" style="width:92%" maxlength="4" title="4 Characters" onkeypress="return isPinCode(event)" /></td>	                    
 	                </tr>
 	            </table>  
 	            <br><br>
@@ -928,7 +871,7 @@ if(!$fgmembersite->CheckLogin())
 	<th>Class</th>
 	<tr>
 	  <td><input type="text" name="bd_agr"  maxlength="5"value="<?php if(isset($bd_agr)) echo $bd_agr;?>" onkeypress="return isPercentage(event)" ></td>
-	  <td><input type="text" name="bd_class" value="<?php if(isset($bd_class)) echo $bd_class;?>" ></td>
+	  <td><input type="text" name="bd_class" value="<?php if(isset($bd_class)) echo $bd_class;?>" maxlength=45 title="45 characters" onkeypress="return isAlpha(event,errorGradeClass);" ><span id="errorGradeClass" style="color: Red; display: none">* Special Characters & integers are not allowed</span></td>
 	</tr>
 	</table>
 	<br></br>
@@ -955,7 +898,7 @@ if(!$fgmembersite->CheckLogin())
 	<th>Class</th>
 	<tr>
 	  <td><input type="text" name="md_agr" value="<?php if(isset($md_agr)) echo $md_agr;?>" ></td>
-	  <td><input type="text" name="md_class" value="<?php if(isset($md_class)) echo $md_class;?>" ></td>
+	  <td><input type="text" name="md_class" value="<?php if(isset($md_class)) echo $md_class;?>" maxlength=45 title="45 characters" onkeypress="return isAlpha(event,errorGradeClass1);" ><span id="errorGradeClass1" style="color: Red; display: none">* Special Characters & integers are not allowed</span></td>
 	</tr>
 	</table>
 	<br></br>
@@ -1279,12 +1222,20 @@ if(!$fgmembersite->CheckLogin())
 	<input type="hidden" value="<?php echo $applnNo ?>" name="appln_number">
 	<script type="text/javascript">
 
-	$(document).ready(function() {
+	/*$(document).ready(function() {
     	$('#savePersonInfo').click(function() {  
       		alert("Please save our personal info before going to next tab !!!");
     	});
-	});
+	});*/
 
+	function checkMails(){
+		var pmail = $('#pemail').val();
+		var amail = $('#aemail').val();
+		if(pmail == amail){
+			$('#aemail').val('');
+			$('#aemail').focus();
+		}
+	}
 
 	function validateEmail(emailField){
 	        var reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
@@ -1321,7 +1272,7 @@ if(!$fgmembersite->CheckLogin())
         return ret;
     }
 
-	  function isNumber(evt) {
+	function isNumber(evt) {
 	    evt = (evt) ? evt : window.event;
 	    var charCode = (evt.which) ? evt.which : evt.keyCode;
 	    if (charCode > 31 && charCode!=45 &&(charCode < 48 || charCode > 57)) {
@@ -1330,7 +1281,16 @@ if(!$fgmembersite->CheckLogin())
 	    return true;
 	}
 
-	 function isPercentage(evt) {
+	function isPinCode(evt) {
+	    evt = (evt) ? evt : window.event;
+	    var charCode = (evt.which) ? evt.which : evt.keyCode;
+	    if (charCode > 31 &&(charCode < 48 || charCode > 57)) {
+	        return false;
+	    }
+	    return true;
+	}
+
+	function isPercentage(evt) {
 	    evt = (evt) ? evt : window.event;
 	    var charCode1 = (evt.which) ? evt.which : evt.keyCode;
 		
