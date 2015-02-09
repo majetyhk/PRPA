@@ -288,6 +288,12 @@ class FGMembersite
         {
             return false;
         }
+
+        if($pwd == $newpwd)
+        {
+            $this->HandleError("Old and new Passwords are same!");
+            return false;
+        }
         return true;
     }
     
