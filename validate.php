@@ -159,8 +159,8 @@ while($row = mysql_fetch_array($result3))
 
 	if($Full_Name=="" || $gender=="" || ($dob=='1970-01-01')  || $fname==""  || $nation="" || $marital=="" || $pc=="" || ($com=="") || ($pemail=="")  || ($Temp_Address=="") || ($T_District=="") || ($tstate=="") || ($T_pincode=="")  ||($perm_Address=="") || ($P_District=="") || ($pstate=="") || ($P_pincode==""))
 	{
-		    
-			echo '<a href="forms.php">Some fields are empty in personal information. Make sure you have filled in all the required fields.</a>';
+		    echo "<br />";
+			echo '<center><span style="font-size: 24px;"><a href="forms.php">Some fields are empty in personal information. Make sure you have filled in all the required fields.</a></span></center>';
 			echo '</head> <body></body></html>';
 			/*echo "<script>
 			alert('Errors in Personal Information');
@@ -171,8 +171,8 @@ while($row = mysql_fetch_array($result3))
 	
 	else if(($univ_10=="") || ($univ_12=="") || ($univ_bd=="") || ($univ_pg=="") || ($degree_10=="") || ($degree_12=="") || ($degree_bd=="") || ($degree_pg=="") || ($marks_10=="") || ($marks_12=="") || ($marks_bd=="") || ($marks_pg=="") || ($grade_10=="") || ($grade_12=="") || ($grade_bd=="") || ($grade_pg=="") || ($year_10=="") || ($year_12=="")|| ($year_bd=="")|| ($year_pg=="")||($bd_2=="") ||($bd_3=="") ||($bd_4=="") ||($bd_5=="") ||($bd_6=="") ||($bd_7=="") ||($bd_8=="") ||($bd_agr=="") || ($bd_class=="") || ($md_1=="") ||($md_2=="") ||($md_3=="") ||($md_4=="") ||($md_agr=="") || ($md_class==""))
 	{
-		    
-			echo 'Some Fields are empty in <a href="forms.php">Academic Information</a>';
+		    echo "<br />";
+			echo '<center><span style="font-size: 24px;">Some Fields are empty in <a href="forms.php">Academic Information</a></span></center>';
 			echo '</head> <body></body></html>';
 			//if(!isset($univ_pg)) echo 'crap';
 			//window.location.href='forms.php';
@@ -181,18 +181,7 @@ while($row = mysql_fetch_array($result3))
 			window.location.href='forms.php';
 			</script>";*/
 	}
-
-
 	
-
-
-	/*if(isset($Full_Name) && isset($gender) && isset($dob)  && isset($fname) && isset($nation) && isset($marital) && isset($pc) && isset($com) && isset($pemail)  && isset($Temp_Address) && isset($T_District) && isset($tstate) && isset($T_pincode)  &&isset($perm_Address) && isset($P_District) && isset($pstate) && isset($P_pincode) && isset($univ_10) && isset($univ_12) && isset($univ_bd) && isset($univ_pg) && isset($degree_10) && isset($degree_12) && isset($degree_bd) && isset($degree_pg) && isset($marks_10) && isset($marks_12) && isset($marks_bd) && isset($marks_pg) && isset($grade_10) && isset($grade_12) && isset($grade_bd) && isset($grade_pg) && isset($year_10) && isset($year_12)&& isset($year_bd)&& isset($year_pg)&&isset($bd_2) &&isset($bd_3) &&isset($bd_4) &&isset($bd_5) &&isset($bd_6) &&isset($bd_7) &&isset($bd_8) &&isset($bd_agr) && isset($bd_class) && isset($md_1) &&isset($md_2) &&isset($md_3) &&isset($md_4) &&isset($md_agr) && isset($md_class))
-	{
-		echo "<script>
-			alert('Some forms aren't saved. Please make sure you have saved all the forms.');
-			window.location.href='forms.php';
-			</script>";
-	}*/
 	else
 	{
 		if(($Full_Name!="") && ($gender!="") && ($dob!="")  && ($fname!="") && ($nation!="") && ($marital!="") && ($pc!="") && ($com!="") && ($pemail!="")  && ($Temp_Address!="") && ($T_District!="") && ($tstate!="") && ($T_pincode!="")  &&($perm_Address!="") && ($P_District!="") && ($pstate!="") && ($P_pincode!="") && ($univ_10!="") && ($univ_12!="") && ($univ_bd!="") && ($univ_pg!="") && ($degree_10!="") && ($degree_12!="") && ($degree_bd!="") && ($degree_pg!="") && ($marks_10!="") && ($marks_12!="") && ($marks_bd!="") && ($marks_pg!="") && ($grade_10!="") && ($grade_12!="") && ($grade_bd!="") && ($grade_pg!="") && ($year_10!="") && ($year_12!="")&& ($year_bd!="")&& ($year_pg!="")&&($bd_2!="") &&($bd_3!="") &&($bd_4!="") &&($bd_5!="") &&($bd_6!="") &&($bd_7!="") &&($bd_8!="") &&($bd_agr!="") && ($bd_class!="") && ($md_1!="") &&($md_2!="") &&($md_3!="") &&($md_4!="") &&($md_agr!="") && ($md_class!=""))

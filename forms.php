@@ -1205,7 +1205,7 @@ if(!$fgmembersite->CheckLogin())
 	<table align="center">
 	<tr>
 	<td><label for="place">Place:</label></td>
-	<td><input type="text" required="required" name="regplace" id="place"></td></tr>
+	<td><input type="text" required="required" name="regplace" maxlength="45" title="45 characters" id="place" onkeypress="return isAlpha(event,errorDecPlace);"><span id="errorDecPlace" style="color: Red; display: none">* Special Characters & integers are not allowed</span></td></tr>
 
 	<tr><td><label for="date">Date:</label></td>
 	<td><input type="text" name="regdate" autocomplete="off" disabled='true' value="<?php echo date("d/m/Y") ?>"></td></tr>
