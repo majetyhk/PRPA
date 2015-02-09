@@ -136,7 +136,7 @@ while($row = mysql_fetch_array($result3))
 	<title>Validate</title>
 	<?php
 
-	if(!isset($Full_Name=="") || !isset($gender=="") || !isset($dob=='1970-01-01')  || !isset($fname=="")  || !isset($nation="") || !isset($marital=="") || !isset($pc=="") || !isset($com=="") || !isset($pemail=="")  || !isset($Temp_Address=="") || !isset($T_District=="") || !isset($tstate=="") || !isset($T_pincode=="")  ||!isset($perm_Address=="") || !isset($P_District=="") || !isset($pstate=="") || !isset($P_pincode==""))
+	if(!isset($Full_Name) || !isset($gender) || !isset($dob)  || !isset($fname)  || !isset($nation) || !isset($marital) || !isset($pc) || !isset($com) || !isset($pemail)  || !isset($Temp_Address) || !isset($T_District) || !isset($tstate) || !isset($T_pincode)  ||!isset($perm_Address) || !isset($P_District) || !isset($pstate) || !isset($P_pincode))
 	{
 		echo '<a href="forms.php">Personal Information</a> not saved. Please save the information before you submit.';
 		echo '</head> <body></body></html>'; 
