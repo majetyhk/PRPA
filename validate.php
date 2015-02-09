@@ -202,9 +202,14 @@ while($personalInfo = mysql_fetch_array($result3))
 		}
 	//2
 	
-		if(!validateDate($personalInfo['date1']))
+		$currentTimestamp=time();
+		if(($dob=dateStringToTimestamp($personalInfo['date1']))==false)
 		{
 			$message.="Enter a Valid date<br/>";
+		}
+		else if($dob>=$currentTimestamp)
+		{
+			$message.="Date of Birth cant be greater than current date.<br/>";
 		}
 	
 	//3
