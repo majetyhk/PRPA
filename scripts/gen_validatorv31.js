@@ -1,4 +1,4 @@
-/*
+
   -------------------------------------------------------------------------
             JavaScript Form Validator (gen_validatorv31.js)
               Version 3.1
@@ -361,7 +361,7 @@ function vset_validate()
 }
 function validateEmail(email)
 {
-    var splitted = email.match("^(.+)@(.+)$");    
+    /*var splitted = email.match("^(.+)@(.+)$");    
     if(splitted == null) return false;
     if(splitted[1] != null )
     {
@@ -377,8 +377,12 @@ function validateEmail(email)
        if(splitted[2].match(regexp_ip) == null) return false;
       }// if
       return true;
+    }*/
+    if(!filter_var(email, FILTER_VALIDATE_EMAIL))
+    {
+      return false;
     }
-return false;
+    return true;
 }
 
 function IsCheckSelected(objValue,chkValue)
@@ -810,4 +814,3 @@ function VWZ_IsChecked(objcheck,value)
 }
 /*
    Copyright (C) 2003-2008 JavaScript-Coder.com . All rights reserved.
-*/
