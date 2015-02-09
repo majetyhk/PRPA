@@ -376,7 +376,6 @@ if(!$fgmembersite->CheckLogin())
 	          Gender<font color=red>*</font> :        </td>
 	        <td colspan="2">
 	        <select name='gender' id='gender' >
-	        <option value='null'>Select an option</option>
 	        <option value='Male' <?php if(isset($gender)&&$gender=='Male') echo "selected"; ?>>Male</option>
 	        <option value='Female' <?php if(isset($gender)&&$gender=='Female') echo "selected"; ?>
 	        >Female</option></select>        </td></tr>
@@ -401,8 +400,7 @@ if(!$fgmembersite->CheckLogin())
 	        <td>
 	         Nationality<font color=red>*</font> :        </td>
 	        <td colspan="2">
-	          <select name='Nationality' id='Nationality'>
-	          <option value='null'>Select nationality</option>
+	          <select name='Nationality' id='Nationality'> 
 	          <option value='Indian'<?php if(isset($nation)&&$nation=='Indian') echo "selected"; ?>>Indian</option>
 	          <option value='Outside India'<?php if(isset($nation)&&$nation=='Outside India') echo "selected"; ?>>Outside India</option>
 	          </select>          </td>
