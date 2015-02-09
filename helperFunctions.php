@@ -173,7 +173,7 @@ function validatePersonalInfoOnSave($personalInfo)
 	if($personalInfo['date1']!='')
 	{
 		$currentTimestamp=time();
-		if(($dob=dateStringToTimestamp($personalInfo['date1']))==false)
+		if(($dob=dateStringToTimestamp($personalInfo['date1'],'-'))==false)
 		{
 			$message.="Enter a Valid date<br/>";
 		}
@@ -201,7 +201,7 @@ function validatePersonalInfoOnSave($personalInfo)
 
 	if($personalInfo['pemail']!='')
 	{
-		if(!(filter_var($personalInfo['pemail'], FILTER_VALIDATE_EMAIL))
+		if(!(filter_var($personalInfo['pemail'], FILTER_VALIDATE_EMAIL)))
 		{
 			$message.="Enter a valid Primary Email Address.";
 		}
@@ -214,7 +214,7 @@ function validatePersonalInfoOnSave($personalInfo)
 	if($personalInfo['aemail']!='')
 	{
 		$check=true;
-		if(!(filter_var($personalInfo['aemail'], FILTER_VALIDATE_EMAIL))
+		if(!(filter_var($personalInfo['aemail'], FILTER_VALIDATE_EMAIL)))
 		{
 			$message.="Enter a valid Alternate Email Address.<br/>";
 			$check=false;
@@ -231,10 +231,7 @@ function validatePersonalInfoOnSave($personalInfo)
 			$message.="Primary and Alternate Email Can't be same. Fill in different one else leave it.<br/>";
 			$check=false;
 		}
-		if($check)
-		{
-			$count++;
-		}
+		
 	}
 
 	/*if($personalInfo['Temp_Address']!='')
@@ -259,7 +256,7 @@ function validatePersonalInfoOnSave($personalInfo)
 
 		if(!hasOnlyNumbers($personalInfo['T_phone_number']))
 		{
-			$message.="Please Enter Valid phone number. Enter Only Numbers."
+			$message.="Please Enter Valid phone number. Enter Only Numbers.";
 		}
 		/*else
 		{
@@ -271,7 +268,7 @@ function validatePersonalInfoOnSave($personalInfo)
 	{
 		if(!hasOnlyNumbers($personalInfo['T_mobile_number']))
 		{
-			$message.="Please Enter Valid mobile number. Enter Only Numbers."
+			$message.="Please Enter Valid mobile number. Enter Only Numbers.";
 		}
 		/*else
 		{

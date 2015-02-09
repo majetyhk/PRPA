@@ -15,51 +15,51 @@ $result1=mysql_query($sql1) or die(mysql_error());
 if(!$result1||mysql_num_rows($result1)<1){//echo 'empty result';
 }
 else
-while($row = mysql_fetch_array($result1))
+while($qualificationsInfo = mysql_fetch_array($result1))
 {
-	$univ_10 = $row['10_univ'];
-	$univ_12 = $row['12_univ'];
-	$univ_bd = $row['bd_univ'];
-	$univ_pg = $row['pg_univ'];
-	$univ_o = $row['o_univ'];
-	$degree_10 = $row['10_degree'];
-	$degree_12 = $row['12_degree'];
-	$degree_bd = $row['bd_degree'];
-	$degree_pg = $row['pg_degree'];
-	$degree_o = $row['o_degree'];
-	$marks_10 = $row['10_marks'];
-	$marks_12 = $row['12_marks'];
-	$marks_bd = $row['bd_marks'];
-	$marks_pg = $row['pg_marks'];
-	$marks_o = $row['o_marks'];
-	$grade_10 = $row['10_grade'];
-	$grade_12 = $row['12_grade'];
-	$grade_bd = $row['bd_grade'];
-	$grade_pg = $row['pg_grade'];
-	$grade_o = $row['o_grade'];
-	$year_10 = $row['10_year'];
-	$year_12 = $row['12_year'];
-	$year_bd = $row['bd_year'];
-	$year_pg = $row['pg_year'];
-	$year_o = $row['o_year'];
-	$bd_1 = $row['bd_1'];
-	$bd_2 = $row['bd_2'];
-	$bd_3 = $row['bd_3'];
-	$bd_4 = $row['bd_4'];
-	$bd_5 = $row['bd_5'];
-	$bd_6 = $row['bd_6'];
-	$bd_7 = $row['bd_7'];
-	$bd_8 = $row['bd_8'];
-	$bd_9 = $row['bd_9'];
-	$bd_10 = $row['bd_10'];
-	$md_1 = $row['md_1'];
-	$md_2 = $row['md_2'];
-	$md_3 = $row['md_3'];
-	$md_4 = $row['md_4'];
-	$md_agr = $row['md_agr'];
-	$bd_agr = $row['bd_agr'];
-	$md_class = $row['md_class'];
-	$bd_class = $row['bd_class'];
+	$univ_10 = $qualificationsInfo['10_univ'];
+	$univ_12 = $qualificationsInfo['12_univ'];
+	$univ_bd = $qualificationsInfo['bd_univ'];
+	$univ_pg = $qualificationsInfo['pg_univ'];
+	$univ_o = $qualificationsInfo['o_univ'];
+	$degree_10 = $qualificationsInfo['10_degree'];
+	$degree_12 = $qualificationsInfo['12_degree'];
+	$degree_bd = $qualificationsInfo['bd_degree'];
+	$degree_pg = $qualificationsInfo['pg_degree'];
+	$degree_o = $qualificationsInfo['o_degree'];
+	$marks_10 = $qualificationsInfo['10_marks'];
+	$marks_12 = $qualificationsInfo['12_marks'];
+	$marks_bd = $qualificationsInfo['bd_marks'];
+	$marks_pg = $qualificationsInfo['pg_marks'];
+	$marks_o = $qualificationsInfo['o_marks'];
+	$grade_10 = $qualificationsInfo['10_grade'];
+	$grade_12 = $qualificationsInfo['12_grade'];
+	$grade_bd = $qualificationsInfo['bd_grade'];
+	$grade_pg = $qualificationsInfo['pg_grade'];
+	$grade_o = $qualificationsInfo['o_grade'];
+	$year_10 = $qualificationsInfo['10_year'];
+	$year_12 = $qualificationsInfo['12_year'];
+	$year_bd = $qualificationsInfo['bd_year'];
+	$year_pg = $qualificationsInfo['pg_year'];
+	$year_o = $qualificationsInfo['o_year'];
+	$bd_1 = $qualificationsInfo['bd_1'];
+	$bd_2 = $qualificationsInfo['bd_2'];
+	$bd_3 = $qualificationsInfo['bd_3'];
+	$bd_4 = $qualificationsInfo['bd_4'];
+	$bd_5 = $qualificationsInfo['bd_5'];
+	$bd_6 = $qualificationsInfo['bd_6'];
+	$bd_7 = $qualificationsInfo['bd_7'];
+	$bd_8 = $qualificationsInfo['bd_8'];
+	$bd_9 = $qualificationsInfo['bd_9'];
+	$bd_10 = $qualificationsInfo['bd_10'];
+	$md_1 = $qualificationsInfo['md_1'];
+	$md_2 = $qualificationsInfo['md_2'];
+	$md_3 = $qualificationsInfo['md_3'];
+	$md_4 = $qualificationsInfo['md_4'];
+	$md_agr = $qualificationsInfo['md_agr'];
+	$bd_agr = $qualificationsInfo['bd_agr'];
+	$md_class = $qualificationsInfo['md_class'];
+	$bd_class = $qualificationsInfo['bd_class'];
 }	
 		
 $sql2 = "select * from experience where user_ex='$t1'";
@@ -221,7 +221,7 @@ while($personalInfo = mysql_fetch_array($result3))
 	
 
 	
-		if(!(filter_var($personalInfo['pemail'], FILTER_VALIDATE_EMAIL))
+		if(!(filter_var($personalInfo['pemail'], FILTER_VALIDATE_EMAIL)))
 		{
 			$message.="Enter a valid Primary Email Address.";
 		}
@@ -229,7 +229,7 @@ while($personalInfo = mysql_fetch_array($result3))
 	
 	
 		$check=true;
-		if(!(filter_var($personalInfo['aemail'], FILTER_VALIDATE_EMAIL))
+		if(!(filter_var($personalInfo['aemail'], FILTER_VALIDATE_EMAIL)))
 		{
 			$message.="Enter a valid Alternate Email Address.<br/>";
 			$check=false;
@@ -254,7 +254,7 @@ while($personalInfo = mysql_fetch_array($result3))
 
 			if(!hasOnlyNumbers($personalInfo['T_phone_number']))
 			{
-				$message.="Please Enter Valid phone number. Enter Only Numbers."
+				$message.="Please Enter Valid phone number. Enter Only Numbers.";
 			}
 		}
 
@@ -262,7 +262,7 @@ while($personalInfo = mysql_fetch_array($result3))
 		{
 			if(!hasOnlyNumbers($personalInfo['T_mobile_number']))
 			{
-				$message.="Please Enter Valid mobile number. Enter Only Numbers."
+				$message.="Please Enter Valid mobile number. Enter Only Numbers.";
 			}
 		}
 
@@ -463,7 +463,246 @@ while($personalInfo = mysql_fetch_array($result3))
 			}
 		}
 
+
+	//Qualifications Validation Starts
 	
+		$univName_10 = $qualificationsInfo["univ_10"];
+		if(!hasOnlyAlphabets($univName_10)){
+			$message = $message."Enter the valid class 10 Board name. Only Alphabhets<br />";
+		}
+	
+	if(($qualificationsInfo["grade_10"]!='% out of 100') && ($qualificationsInfo["grade_10"]!='CGPA out of 10') && ($qualificationsInfo["grade_10"]!='CPI out of 4') && ($qualificationsInfo["grade_10"]!='CPI out of 8') ){
+		$message = $message."Enter valid 10th Evalution of marks <br />";
+	}
+	
+		$marks_10 = $qualificationsInfo["marks_10"];
+		if(!isValidPercentage($marks_10)){
+			$message = $message."Enter valid percentage for class 10 <br />";
+		}
+	
+	
+		$passYear_10 = $qualificationsInfo["year_10"];
+		if(!hasOnlyNumbers($passYear_10)){
+			$message = $message."Enter valid year of passsing for class 10th <br />";
+		}
+	
+	/*********  CLASS 12 Validation  ************/
+	
+		$univName_12 = $qualificationsInfo["univ_12"];
+		if(!hasOnlyAlphabets($univName_12)){
+			$message = $message."Enter the valid class 12th Board name. Only Alphabhets<br />";
+		}
+	
+	if(($qualificationsInfo["grade_12"]!='% out of 100') && ($qualificationsInfo["grade_12"]!='CGPA out of 10') && ($qualificationsInfo["grade_12"]!='CPI out of 4') && ($qualificationsInfo["grade_12"]!='CPI out of 8') ){
+		$message = $message."Enter valid Evalution of marks for class 12th <br />";
+	}
+	
+		$marks_12 = $qualificationsInfo["marks_12"];
+		if(!isValidPercentage($marks_12)){
+			$message = $message."Enter valid percentage for class 12 <br />";
+		}
+	
+	
+		$passYear_12 = $qualificationsInfo["year_12"];
+		if(!hasOnlyNumbers($passYear_12)){
+			$message = $message."Enter valid year of passsing for Board 12 <br />";
+		}
+	
+	/************ bachelor degree validation  ***************/
+	
+		$bd_univName = $qualificationsInfo["bd_univ"];
+		if(!hasOnlyAlphabets($bd_univName)){
+			$message = $message."Enter the valid Bachelor Degree University name. Only Alphabhets<br />";
+		}
+	
+	
+		$bd_degree = $qualificationsInfo["bd_degree"];
+		if(!hasOnlyAlphaNumerics($bd_degree)){
+			$message = $message."Enter the Valid Bachelor Degree Equivalent<br />";
+		}
+	
+	if(($qualificationsInfo["bd_grade"]!='% out of 100') && ($qualificationsInfo["bd_grade"]!='CGPA out of 10') && ($qualificationsInfo["bd_grade"]!='CPI out of 4') && ($qualificationsInfo["bd_grade"]!='CPI out of 8') ){
+		$message = $message."Enter valid Evalution of marks for Bachelor degree <br />";
+	}
+	
+		$bd_marks = $qualificationsInfo["bd_marks"];
+		if(!isValidPercentage($bd_marks)){
+			$message = $message."Enter valid percentage for Bachelor Degree <br />";
+		}
+	
+	
+		$passYear_bd = $qualificationsInfo["bd_year"];
+		if(!hasOnlyNumbers($passYear_bd)){
+			$message = $message."Enter valid year of passsing for Bachelor Degree <br />";
+		}
+	
+	/**************  Masters degree validation  ****************/
+	if($qualificationsInfo["pg_univ"]!=''){
+		$pg_univName = $qualificationsInfo["pg_univ"];
+		if(!hasOnlyAlphabets($pg_univName)){
+			$message = $message."Enter the valid Masters Degree University name. Only Alphabhets<br />";
+		}
+	}
+	if($qualificationsInfo["pg_degree"]!=''){
+		$pg_degree = $qualificationsInfo["pg_degree"];
+		if(!hasOnlyAlphaNumerics($pg_degree)){
+			$message = $message."Enter the Valid Masters Degree Equivalent<br />";
+		}
+	}
+	if(($qualificationsInfo["pg_grade"]!='% out of 100') || ($qualificationsInfo["pg_grade"]!='CGPA out of 10') || ($qualificationsInfo["pg_grade"]!='CPI out of 4') || ($qualificationsInfo["pg_grade"]!='CPI out of 8') ){
+		$message = $message."Enter valid Evalution of marks for Masters degree <br />";
+	}
+	if($qualificationsInfo["pg_marks"]!=''){
+		$pg_marks = $qualificationsInfo["pg_marks"];
+		if(!isValidPercentage($pg_marks)){
+			$message = $message."Enter valid percentage for Masters Degree <br />";
+		}
+	}
+	if($qualificationsInfo["pg_year"]!=''){
+		$passYear_pg = $qualificationsInfo["pg_year"];
+		if(!hasOnlyNumbers($passYear_pg)){
+			$message = $message."Enter valid year of passsing for masters degree <br />";
+		}
+	}
+	/**************   Other degree validation  ********************/
+	if($qualificationsInfo["o_univ"]!=''){
+		$o_univName = $qualificationsInfo["o_univ"];
+		if(!hasOnlyAlphabets($o_univName)){
+			$message = $message."Enter the valid others Degree University name. Only Alphabhets<br />";
+		}
+	}
+	if($qualificationsInfo["o_degree"]!=''){
+		$o_degree = $qualificationsInfo["o_degree"];
+		if(!hasOnlyAlphaNumerics($o_degree)){
+			$message = $message."Enter the Valid others Degree Equivalent<br />";
+		}
+	}
+	if(($qualificationsInfo["o_grade"]!='% out of 100') || ($qualificationsInfo["o_grade"]!='CGPA out of 10') || ($qualificationsInfo["o_grade"]!='CPI out of 4') || ($qualificationsInfo["o_grade"]!='CPI out of 8') ){
+		$message = $message."Enter valid Evalution of marks for others <br />";
+	}
+	if($qualificationsInfo["o_marks"]!=''){
+		$o_marks = $qualificationsInfo["o_marks"];
+		if(!isValidPercentage($o_marks)){
+			$message = $message."Enter valid percentage for other Degree <br />";
+		}
+	}
+	if($qualificationsInfo["o_year"]!=''){
+		$passYear_o = $qualificationsInfo["o_year"];
+		if(!hasOnlyNumbers($passYear_o)){
+			$message = $message."Enter valid year of passsing for other <br />";
+		}
+	}
+	/************* B.tech CGPA validation *************/
+	
+		$bd_cgpa1 = $qualificationsInfo["bd_1"];
+		if(!isValidPercentage($bd_cgpa1)){
+			$message = $message."Enter valid percentage for B.E/B.tech I sem <br />";
+		}
+	
+	
+		$bd_cgpa2 = $qualificationsInfo["bd_2"];
+		if(!isValidPercentage($bd_cgpa1)){
+			$message = $message."Enter valid percentage for B.E/B.tech II sem <br />";
+		}
+	
+	
+		$bd_cgpa3 = $qualificationsInfo["bd_3"];
+		if(!isValidPercentage($bd_cgpa1)){
+			$message = $message."Enter valid percentage for B.E/B.tech III sem <br />";
+		}
+	
+	
+		$bd_cgpa4 = $qualificationsInfo["bd_4"];
+		if(!isValidPercentage($bd_cgpa1)){
+			$message = $message."Enter valid percentage for B.E/B.tech IV sem <br />";
+		}
+	
+	
+		$bd_cgpa5 = $qualificationsInfo["bd_5"];
+		if(!isValidPercentage($bd_cgpa1)){
+			$message = $message."Enter valid percentage for B.E/B.tech V sem <br />";
+		}
+	
+	
+		$bd_cgpa6 = $qualificationsInfo["bd_6"];
+		if(!isValidPercentage($bd_cgpa1)){
+			$message = $message."Enter valid percentage for B.E/B.tech VI sem <br />";
+		}
+	
+	
+		$bd_cgpa7 = $qualificationsInfo["bd_7"];
+		if(!isValidPercentage($bd_cgpa1)){
+			$message = $message."Enter valid percentage for B.E/B.tech VII sem <br />";
+		}
+	
+	
+		$bd_cgpa8 = $qualificationsInfo["bd_8"];
+		if(!isValidPercentage($bd_cgpa1)){
+			$message = $message."Enter valid percentage for B.E/B.tech VIII sem <br />";
+		}
+	
+	if($qualificationsInfo["bd_9"]!=''){
+		$bd_cgpa9 = $qualificationsInfo["bd_9"];
+		if(!isValidPercentage($bd_cgpa1)){
+			$message = $message."Enter valid percentage for B.E/B.tech IX sem <br />";
+		}
+	}
+	if($qualificationsInfo["bd_10"]!=''){
+		$bd_cgpa10 = $qualificationsInfo["bd_10"];
+		if(!isValidPercentage($bd_cgpa1)){
+			$message = $message."Enter valid percentage for B.E/B.tech X sem <br />";
+		}
+	}
+	
+		$bd_cgpaagr = $qualificationsInfo["bd_agr"];
+		if(!isValidPercentage($bd_cgpaagr)){
+			$message = $message."Enter valid aggregate percentage for B.E/B.tech <br />";
+		}
+	
+	
+		$bd_agrclass = $qualificationsInfo["bd_class"];
+		if(!hasOnlyAlphaNumerics($bd_agrclass)){
+			$message = $message."Enter valid class for B.E/B.tech <br />";
+		}
+	
+	
+		$md_cgpa1 = $qualificationsInfo["md_1"];
+		if(!isValidPercentage($md_cgpa1)){
+			$message = $message."Enter valid aggregate percentage for M.E/M.tech <br />";
+		}
+	
+	
+		$md_cgpa2 = $qualificationsInfo["md_2"];
+		if(!isValidPercentage($md_cgpa2)){
+			$message = $message."Enter valid aggregate percentage for M.E/M.tech <br />";
+		}
+	
+	
+		$md_cgpa3 = $qualificationsInfo["md_3"];
+		if(!isValidPercentage($md_cgpa3)){
+			$message = $message."Enter valid aggregate percentage for M.E/M.tech <br />";
+		}
+	
+	
+		$md_cgpa4 = $qualificationsInfo["md_4"];
+		if(!isValidPercentage($md_cgpa4)){
+			$message = $message."Enter valid aggregate percentage for M.E/M.tech <br />";
+		}
+	
+	
+		$md_cgpaagr = $qualificationsInfo["md_agr"];
+		if(!isValidPercentage($md_cgpaagr)){
+			$message = $message."Enter valid aggregate percentage for M.E/M.tech <br />";
+		}
+	
+	
+		$md_agrClass = $qualificationsInfo["md_class"];
+		if(!hasOnlyAlphaNumerics($md_agrClass)){
+			$message = $message."Enter valid aggregate percentage for M.E/M.tech <br />";
+		}
+	
+
+
 		if($message=='')
 		{
 			$sql5 ="update fgusers3 set submit_status='1' where username='$t1'";
