@@ -10,18 +10,13 @@ for ($i=0; $i<=7; $i++)
 	
 			$allowedExts = array("pdf", "png","jpg","jpeg");
 		$extension = end(explode(".", $_FILES["file"]["name"][$i]));
-		if ((($_FILES["file"]["type"][$i] == "application/pdf")
-		|| ($_FILES["file"]["type"][$i] == "image/png")
-		|| ($_FILES["file"]["type"][$i] == "image/jpeg"))
-		|| ($_FILES["file"]["type"][$i] == "image/jpg")
-		&& ($_FILES["file"]["size"][$i] < 1048576) //1MB
-		&& in_array($extension, $allowedExts))
-		  {
-				if ($_FILES["file"]["error"][$i] > 0)
-			  {
-			echo "Return Code: " . $_FILES["file"]["error"][$i] . "<br>";
+		if ((($_FILES["file"]["type"][$i] == "application/pdf")	|| ($_FILES["file"]["type"][$i] == "image/png")	|| ($_FILES["file"]["type"][$i] == "image/jpeg")) || ($_FILES["file"]["type"][$i] == "image/jpg") && ($_FILES["file"]["size"][$i] < 1048576) && in_array($extension, $allowedExts))
+		{
+			if ($_FILES["file"]["error"][$i] > 0)
+			{
+				echo "Return Code: " . $_FILES["file"]["error"][$i] . "<br>";
 			}
-		  else
+		    else
 			{
 				   
 			/*echo "Upload: " . $_FILES["file"]["name"][$i] . "<br>";
@@ -35,6 +30,7 @@ for ($i=0; $i<=7; $i++)
 			  }
 			else
 			  {*/
+			  	if($i)
 			  if(file_exists("upload/" . $_FILES["file"]["name"][$i]))
 			  {
 				unlink("upload/" . $_FILES["file"]["name"][$i]);
