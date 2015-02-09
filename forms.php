@@ -902,44 +902,44 @@ if(!$fgmembersite->CheckLogin())
 	</tr>
 	</table>
 	<br></br>
-				<p style="text-align:left;font-family:arial;color:black;font-size:20px;">Professional Experience</p>
+				<p style="text-align:left;font-family:arial;color:black;font-size:20px;">Professional Experience<span id="errorOrg" style="color: Red; display: none">* Special Characters & integers are not allowed</span><span id="errorPeriod" style="color: Red; display: none">* Special Characters are not allowed</span></p>
 	<br></br>
 
-				<table border = "1" cellspacing = "0">
+	<table border = "1"  cellspacing = "10" >
 	<th>Organization Name</th>
 	<th>Designation</th>
 	<th>Period</th>
 	<th>Nature of work</th>
 
 	<tr>
-	   <td><input type="text" name="org_1" value="<?php if(isset($org_1)) echo $org_1;?>" ></td>
-	  <td><input type="text" name="des_1" value="<?php if(isset($des_1)) echo $des_1;?>" ></td>
-	  <td><input type="text" name="per_1" value="<?php if(isset($per_1)) echo $per_1;?>" ></td>
-	  <td><input type="text" name="work_1" value="<?php if(isset($work_1)) echo $work_1;?>" ></td>
+	  <td ><input type="text" name="org_1" value="<?php if(isset($org_1)) echo $org_1;?>" maxlength="95" onkeypress="return isAlpha(event,errorOrg);" ></td>
+	  <td ><input type="text" name="des_1" value="<?php if(isset($des_1)) echo $des_1;?>" maxlength="75" onkeypress="return isAlpha(event,errorOrg);" ></td>
+	  <td ><input type="text" name="per_1" value="<?php if(isset($per_1)) echo $per_1;?>" maxlength="10" onkeypress="return isAlphaNumeric(event,errorPeriod);" ></td>
+	  <td ><input type="text" name="work_1" value="<?php if(isset($work_1)) echo $work_1;?>" maxlength="45" onkeypress="return isAlpha(event,errorOrg);" ></td>
 	  </tr>
 	  <tr>
-	   <td><input type="text" name="org_2" value="<?php if(isset($org_2)) echo $org_2;?>" ></td>
-	  <td><input type="text" name="des_2" value="<?php if(isset($des_2)) echo $des_2;?>" ></td>
-	  <td><input type="text" name="per_2" value="<?php if(isset($per_2)) echo $per_2;?>" ></td>
-	  <td><input type="text" name="work_2" value="<?php if(isset($work_2)) echo $work_2;?>" ></td>
+	   <td><input type="text" name="org_2" value="<?php if(isset($org_2)) echo $org_2;?>" maxlength="95" onkeypress="return isAlpha(event,errorOrg);" ></td>
+	  <td><input type="text" name="des_2" value="<?php if(isset($des_2)) echo $des_2;?>" maxlength="75" onkeypress="return isAlpha(event,errorOrg);" ></td>
+	  <td><input type="text" name="per_2" value="<?php if(isset($per_2)) echo $per_2;?>" maxlength="10" onkeypress="return isAlphaNumeric(event,errorPeriod);" ></td>
+	  <td><input type="text" name="work_2" value="<?php if(isset($work_2)) echo $work_2;?>" maxlength="45" onkeypress="return isAlpha(event,errorOrg);" ></td>
 	  </tr>
 	<tr>
-	   <td><input type="text" name="org_3" value="<?php if(isset($org_3)) echo $org_3;?>" ></td>
-	  <td><input type="text" name="des_3" value="<?php if(isset($des_3)) echo $des_3;?>" ></td>
-	  <td><input type="text" name="per_3" value="<?php if(isset($per_3)) echo $per_3;?>" ></td>
-	  <td><input type="text" name="work_3" value="<?php if(isset($work_3)) echo $work_3;?>" ></td>
+	   <td><input type="text" name="org_3" value="<?php if(isset($org_3)) echo $org_3;?>" maxlength="95" onkeypress="return isAlpha(event,errorOrg);"></td>
+	  <td><input type="text" name="des_3" value="<?php if(isset($des_3)) echo $des_3;?>" maxlength="75" onkeypress="return isAlpha(event,errorOrg);" ></td>
+	  <td><input type="text" name="per_3" value="<?php if(isset($per_3)) echo $per_3;?>" maxlength="10" onkeypress="return isAlphaNumeric(event,errorPeriod);" ></td>
+	  <td><input type="text" name="work_3" value="<?php if(isset($work_3)) echo $work_3;?>" maxlength="45" onkeypress="return isAlpha(event,errorOrg);" ></td>
 	  </tr>
 	<tr>
-	   <td><input type="text" name="org_4" value="<?php if(isset($org_4)) echo $org_4;?>" ></td>
-	  <td><input type="text" name="des_4" value="<?php if(isset($des_4)) echo $des_4;?>" ></td>
-	  <td><input type="text" name="per_4" value="<?php if(isset($per_4)) echo $per_4;?>" ></td>
-	  <td><input type="text" name="work_4" value="<?php if(isset($work_4)) echo $work_4;?>" ></td>
+	   <td><input type="text" name="org_4" value="<?php if(isset($org_4)) echo $org_4;?>" maxlength="95" onkeypress="return isAlpha(event,errorOrg);"></td>
+	  <td><input type="text" name="des_4" value="<?php if(isset($des_4)) echo $des_4;?>" maxlength="75" onkeypress="return isAlpha(event,errorOrg);" ></td>
+	  <td><input type="text" name="per_4" value="<?php if(isset($per_4)) echo $per_4;?>" maxlength="10" onkeypress="return isAlphaNumeric(event,errorPeriod);" ></td>
+	  <td><input type="text" name="work_4" value="<?php if(isset($work_4)) echo $work_4;?>" maxlength="45" onkeypress="return isAlpha(event,errorOrg);" ></td>
 	  </tr>
 	<tr>
-	   <td><input type="text" name="org_5" value="<?php if(isset($org_5)) echo $org_5;?>" ></td>
-	  <td><input type="text" name="des_5" value="<?php if(isset($des_5)) echo $des_5;?>" ></td>
-	  <td><input type="text" name="per_5" value="<?php if(isset($per_5)) echo $per_5;?>" ></td>
-	  <td><input type="text" name="work_5" value="<?php if(isset($work_5)) echo $work_5;?>" ></td>
+	   <td><input type="text" name="org_5" value="<?php if(isset($org_5)) echo $org_5;?>" maxlength="95" onkeypress="return isAlpha(event,errorOrg);" ></td>
+	  <td><input type="text" name="des_5" value="<?php if(isset($des_5)) echo $des_5;?>" maxlength="75" onkeypress="return isAlpha(event,errorOrg);" ></td>
+	  <td><input type="text" name="per_5" value="<?php if(isset($per_5)) echo $per_5;?>" maxlength="10" onkeypress="return isAlphaNumeric(event,errorPeriod);" ></td>
+	  <td><input type="text" name="work_5" value="<?php if(isset($work_5)) echo $work_5;?>" maxlength="45" onkeypress="return isAlpha(event,errorOrg);" ></td>
 	  </tr>
 
 	</table>
@@ -969,18 +969,14 @@ if(!$fgmembersite->CheckLogin())
 	<tr>
 	<td>
 	<?php 
-	 if (file_exists("upload/" .$applnNo."_DD.pdf"))
-		      {
-		      echo '<img src="images/r.png" alt="Uploaded" height="20" width="20">';
-			  
-	          //echo '<style type="text/css"#file1{width:90px;color:transparent;};</style>';
-
-			 }
+	 if (file_exists("upload/" .$applnNo."_DD.pdf")){
+		echo '<img src="images/r.png" alt="Uploaded" height="20" width="20">';
+	}
 			  
 	else{
-		      echo '<img src="images/w.png" alt="Not uploaded" height="20" width="20">';}
-			  
-	 ?>
+	    echo '<img src="images/w.png" alt="Not uploaded" height="20" width="20">';
+	}		  
+	?>
 	 </td>
 	 <td>
 	<label for="file">Demand Draft<font color=red>*</font>:</label></td>
@@ -1257,10 +1253,10 @@ if(!$fgmembersite->CheckLogin())
     specialKeys.push(35); //End
     specialKeys.push(37); //Left
     specialKeys.push(39); //Right
-    function isAlphaNumeric(e) {
+    function isAlphaNumeric(e,pid) {
         var keyCode = e.keyCode == 0 ? e.charCode : e.keyCode;
         var ret = ((keyCode >= 48 && keyCode <= 57) || (keyCode >= 65 && keyCode <= 90) || (keyCode >= 97 && keyCode <= 122) || (specialKeys.indexOf(e.keyCode) != -1 && e.charCode != e.keyCode));
-        document.getElementById("error").style.display = ret ? "none" : "inline";
+        pid.style.display = ret ? "none" : "inline";
         return ret;
     }
 
