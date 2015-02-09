@@ -70,28 +70,28 @@ if(!$result2||mysql_num_rows($result2)<1){
 }
 else
 {
-	while($row = mysql_fetch_array($result2))
+	while($experienceInfo = mysql_fetch_array($result2))
   	{
-		$org_1 = $row['org_1'];
-		$org_2 = $row['org_2'];
-		$org_3 = $row['org_3'];
-		$org_4 = $row['org_4'];
-		$org_5 = $row['org_5'];
-		$des_1 = $row['des_1'];
-		$des_2 = $row['des_2'];
-		$des_3 = $row['des_3'];
-		$des_4 = $row['des_4'];
-		$des_5 = $row['des_5'];
-		$per_1 = $row['per_1'];
-		$per_2 = $row['per_2'];
-		$per_3 = $row['per_3'];
-		$per_4 = $row['per_4'];
-		$per_5 = $row['per_5'];
-		$work_1 = $row['work_1'];
-		$work_2 = $row['work_2'];
-		$work_3 = $row['work_3'];
-		$work_4 = $row['work_4'];
-		$work_5 = $row['work_5'];
+		$org_1 = $experienceInfo['org_1'];
+		$org_2 = $experienceInfo['org_2'];
+		$org_3 = $experienceInfo['org_3'];
+		$org_4 = $experienceInfo['org_4'];
+		$org_5 = $experienceInfo['org_5'];
+		$des_1 = $experienceInfo['des_1'];
+		$des_2 = $experienceInfo['des_2'];
+		$des_3 = $experienceInfo['des_3'];
+		$des_4 = $experienceInfo['des_4'];
+		$des_5 = $experienceInfo['des_5'];
+		$per_1 = $experienceInfo['per_1'];
+		$per_2 = $experienceInfo['per_2'];
+		$per_3 = $experienceInfo['per_3'];
+		$per_4 = $experienceInfo['per_4'];
+		$per_5 = $experienceInfo['per_5'];
+		$work_1 = $experienceInfo['work_1'];
+		$work_2 = $experienceInfo['work_2'];
+		$work_3 = $experienceInfo['work_3'];
+		$work_4 = $experienceInfo['work_4'];
+		$work_5 = $experienceInfo['work_5'];
 	}	
 }
 	
@@ -99,31 +99,31 @@ else
 $sql3 = "select * from personal_info where user_name='$t1'";
 
 $result3=mysql_query($sql3) or die(mysql_error());
-while($row = mysql_fetch_array($result3))
+while($personalInfo = mysql_fetch_array($result3))
 {
-	$Full_Name = $row['Full_Name'];
-	$gender = $row['gender'];
-	$dob = $row['dob'];
-	$fname = $row['fname'];
-	$nation=$row['Nationality'];
-	$marital=$row['Marital_status'];
-	$pc=$row['Physically_challenged'];
-	$com=$row['community'];
-	$minority=$row['Minority'];
-	$pemail = $row['pemail'];
-	$aemail = $row['aemail'];
-	$Temp_Address = $row['Temp_Address'];
-	$T_District = $row['T_District'];
-	$T_pincode = $row['T_pincode'];
-	$T_phone_number = $row['T_phone_number'];
-	$T_mobile_number = $row['T_mobile_number'];
-	$perm_Address = $row['perm_Address'];
-	$P_District = $row['P_District'];
-	$P_pincode = $row['P_pincode'];
-	$P_phone_number = $row['P_phone_number'];
-	$P_mobile_number = $row['P_mobile_number'];
-	$tstate=$row['T_state'];
-	$pstate=$row['P_state'];
+	$Full_Name = $personalInfo['Full_Name'];
+	$gender = $personalInfo['gender'];
+	$dob = $personalInfo['dob'];
+	$fname = $personalInfo['fname'];
+	$nation=$personalInfo['Nationality'];
+	$marital=$personalInfo['Marital_status'];
+	$pc=$personalInfo['Physically_challenged'];
+	$com=$personalInfo['community'];
+	$minority=$personalInfo['Minority'];
+	$pemail = $personalInfo['pemail'];
+	$aemail = $personalInfo['aemail'];
+	$Temp_Address = $personalInfo['Temp_Address'];
+	$T_District = $personalInfo['T_District'];
+	$T_pincode = $personalInfo['T_pincode'];
+	$T_phone_number = $personalInfo['T_phone_number'];
+	$T_mobile_number = $personalInfo['T_mobile_number'];
+	$perm_Address = $personalInfo['perm_Address'];
+	$P_District = $personalInfo['P_District'];
+	$P_pincode = $personalInfo['P_pincode'];
+	$P_phone_number = $personalInfo['P_phone_number'];
+	$P_mobile_number = $personalInfo['P_mobile_number'];
+	$tstate=$personalInfo['T_state'];
+	$pstate=$personalInfo['P_state'];
 	
 }
 
@@ -184,7 +184,282 @@ while($row = mysql_fetch_array($result3))
 	
 	else
 	{
-		if(($Full_Name!="") && ($gender!="") && ($dob!="")  && ($fname!="") && ($nation!="") && ($marital!="") && ($pc!="") && ($com!="") && ($pemail!="")  && ($Temp_Address!="") && ($T_District!="") && ($tstate!="") && ($T_pincode!="")  &&($perm_Address!="") && ($P_District!="") && ($pstate!="") && ($P_pincode!="") && ($univ_10!="") && ($univ_12!="") && ($univ_bd!="") && ($univ_pg!="") && ($degree_10!="") && ($degree_12!="") && ($degree_bd!="") && ($degree_pg!="") && ($marks_10!="") && ($marks_12!="") && ($marks_bd!="") && ($marks_pg!="") && ($grade_10!="") && ($grade_12!="") && ($grade_bd!="") && ($grade_pg!="") && ($year_10!="") && ($year_12!="")&& ($year_bd!="")&& ($year_pg!="")&&($bd_2!="") &&($bd_3!="") &&($bd_4!="") &&($bd_5!="") &&($bd_6!="") &&($bd_7!="") &&($bd_8!="") &&($bd_agr!="") && ($bd_class!="") && ($md_1!="") &&($md_2!="") &&($md_3!="") &&($md_4!="") &&($md_agr!="") && ($md_class!=""))
+
+		/*if(($Full_Name!="") && ($gender!="") && ($dob!="")  && ($fname!="") && ($nation!="") && ($marital!="") && ($pc!="") && ($com!="") && ($pemail!="")  && ($Temp_Address!="") && ($T_District!="") && ($tstate!="") && ($T_pincode!="")  &&($perm_Address!="") && ($P_District!="") && ($pstate!="") && ($P_pincode!="") && ($univ_10!="") && ($univ_12!="") && ($univ_bd!="") && ($univ_pg!="") && ($degree_10!="") && ($degree_12!="") && ($degree_bd!="") && ($degree_pg!="") && ($marks_10!="") && ($marks_12!="") && ($marks_bd!="") && ($marks_pg!="") && ($grade_10!="") && ($grade_12!="") && ($grade_bd!="") && ($grade_pg!="") && ($year_10!="") && ($year_12!="")&& ($year_bd!="")&& ($year_pg!="")&&($bd_2!="") &&($bd_3!="") &&($bd_4!="") &&($bd_5!="") &&($bd_6!="") &&($bd_7!="") &&($bd_8!="") &&($bd_agr!="") && ($bd_class!="") && ($md_1!="") &&($md_2!="") &&($md_3!="") &&($md_4!="") &&($md_agr!="") && ($md_class!=""))*/
+		$message='';
+	//1
+	
+		$fullName=$personalInfo['Full_Name'];
+		if(!hasOnlyAlphabets($fullName))
+		{
+			$message='Enter a Valid name. Only Alphabets<br/>';
+		}
+
+	
+		if($personalInfo['gender']!='Male'||$personalInfo['gender']!='Female')
+		{
+			$message.='Enter Gender<br/.';
+		}
+	//2
+	
+		if(!validateDate($personalInfo['date1']))
+		{
+			$message.="Enter a Valid date<br/>";
+		}
+	
+	//3
+	
+		if(!hasOnlyAlphabets($personalInfo['fname']))
+		{
+			$message.="Enter a Valid Father's Name. Only Alphabets are Allowed<br/>";
+		}
+	
+
+	
+		if(!(filter_var($personalInfo['pemail'], FILTER_VALIDATE_EMAIL))
+		{
+			$message.="Enter a valid Primary Email Address.";
+		}
+	
+	
+	
+		$check=true;
+		if(!(filter_var($personalInfo['aemail'], FILTER_VALIDATE_EMAIL))
+		{
+			$message.="Enter a valid Alternate Email Address.<br/>";
+			$check=false;
+		}
+
+
+		if($personalInfo['pemail']==$personalInfo['aemail'])
+		{
+			$message.="Primary and Alternate Email Can't be same. Fill in different one else leave it.<br/>";
+			$check=false;
+		}
+
+	
+		if(!hasOnlyCharacters('0-9-',$personalInfo['T_pincode']))
+		{
+			$message.="Please Enter  Valid Pincode. Numerics Only.<br/>";
+		}
+	
+
+		if($personalInfo['T_phone_number']!='')
+		{
+
+			if(!hasOnlyNumbers($personalInfo['T_phone_number']))
+			{
+				$message.="Please Enter Valid phone number. Enter Only Numbers."
+			}
+		}
+
+		if($personalInfo['T_mobile_number']!='')
+		{
+			if(!hasOnlyNumbers($personalInfo['T_mobile_number']))
+			{
+				$message.="Please Enter Valid mobile number. Enter Only Numbers."
+			}
+		}
+
+
+	
+		if(!hasOnlyCharacters('0-9-',$personalInfo['P_pincode']))
+		{
+			$message.="Enter Valid Pincode in Permanent Address.<br/>";
+		}
+	
+
+		if($personalInfo['P_phone_number']!='')
+		{
+			if(!hasOnlyNumbers($personalInfo['P_phone_number']))
+			{
+				$message.="Enter valid phone number in Permanent Address. Enter Only Numbers<br/>";
+			}
+		}
+
+		if($personalInfo['P_mobile_number']!='')
+		{
+			if(!hasOnlyNumbers($personalInfo['P_mobile_number']))
+			{
+				$message.="Enter Valid mobile number in Permanent Address. Enter Only Numbers.<br/>";
+			}
+		}
+
+		//Personal Info validation code ends
+		//Experience validation code begins
+
+		if($experienceInfo['org_1']!='')
+		{
+			if(!hasOnlyAlphaNumerics($experienceInfo['org_1']))
+			{
+				$message.="Enter a Valid Organisation name. Only Alphanumerics are Allowed in Work Experience 1";
+			}
+		}
+
+		if($experienceInfo['des_1']!='')
+		{
+			if(!hasOnlyAlphabets($experienceInfo['des_1']))
+			{
+				$message.="Enter A valid Designation. Only Alphabets are Allowed in Work Experience 1.";
+			}
+		}
+
+		if($experienceInfo['per_1']!='')
+		{
+			if(!hasOnlyAlphaNumerics($experienceInfo['per_1']))
+			{
+				$message.="Enter A valid Experience Period. Only Alpha Numerics are Allowed in Work Experience 1.";
+			}
+		}
+
+		if($experienceInfo['work_1']!='')
+		{
+			if(!hasOnlyAlphaNumerics($experienceInfo['work_1']))
+			{
+				$message.="Only Alpha Numerics are allowed in Nature Of work in work Experience 1.";
+			}
+		}
+
+
+
+		//Work Exp 2
+
+		if($experienceInfo['org_2']!='')
+		{
+			if(!hasOnlyAlphaNumerics($experienceInfo['org_2']))
+			{
+				$message.="Enter a Valid Organisation name. Only Alphanumerics are Allowed in Work Experience 2";
+			}
+		}
+
+		if($experienceInfo['des_2']!='')
+		{
+			if(!hasOnlyAlphabets($experienceInfo['des_2']))
+			{
+				$message.="Enter A valid Designation. Only Alphabets are Allowed in Work Experience 2.";
+			}
+		}
+
+		if($experienceInfo['per_2']!='')
+		{
+			if(!hasOnlyAlphaNumerics($experienceInfo['per_2']))
+			{
+				$message.="Enter A valid Experience Period. Only Alpha Numerics are Allowed in Work Experience 2.";
+			}
+		}
+
+		if($experienceInfo['work_2']!='')
+		{
+			if(!hasOnlyAlphaNumerics($experienceInfo['work_2']))
+			{
+				$message.="Only Alpha Numerics are allowed in Nature Of work in work Experience 2.";
+			}
+		}
+
+		//work exp 3
+
+		if($experienceInfo['org_3']!='')
+		{
+			if(!hasOnlyAlphaNumerics($experienceInfo['org_3']))
+			{
+				$message.="Enter a Valid Organisation name. Only Alphanumerics are Allowed in Work Experience 3";
+			}
+		}
+
+		if($experienceInfo['des_3']!='')
+		{
+			if(!hasOnlyAlphabets($experienceInfo['des_3']))
+			{
+				$message.="Enter A valid Designation. Only Alphabets are Allowed in Work Experience 3.";
+			}
+		}
+
+		if($experienceInfo['per_3']!='')
+		{
+			if(!hasOnlyAlphaNumerics($experienceInfo['per_3']))
+			{
+				$message.="Enter A valid Experience Period. Only Alpha Numerics are Allowed in Work Experience 3.";
+			}
+		}
+
+		if($experienceInfo['work_3']!='')
+		{
+			if(!hasOnlyAlphaNumerics($experienceInfo['work_3']))
+			{
+				$message.="Only Alpha Numerics are allowed in Nature Of work in work Experience 3.";
+			}
+		}
+
+
+		//work exp 4
+		if($experienceInfo['org_4']!='')
+		{
+			if(!hasOnlyAlphaNumerics($experienceInfo['org_4']))
+			{
+				$message.="Enter a Valid Organisation name. Only Alphanumerics are Allowed in Work Experience 4";
+			}
+		}
+
+		if($experienceInfo['des_4']!='')
+		{
+			if(!hasOnlyAlphabets($experienceInfo['des_4']))
+			{
+				$message.="Enter A valid Designation. Only Alphabets are Allowed in Work Experience 4.";
+			}
+		}
+
+		if($experienceInfo['per_4']!='')
+		{
+			if(!hasOnlyAlphaNumerics($experienceInfo['per_4']))
+			{
+				$message.="Enter A valid Experience Period. Only Alpha Numerics are Allowed in Work Experience 4.";
+			}
+		}
+
+		if($experienceInfo['work_4']!='')
+		{
+			if(!hasOnlyAlphaNumerics($experienceInfo['work_4']))
+			{
+				$message.="Only Alpha Numerics are allowed in Nature Of work in work Experience 4.";
+			}
+		}
+
+		//work exp 5
+
+		if($experienceInfo['org_5']!='')
+		{
+			if(!hasOnlyAlphaNumerics($experienceInfo['org_5']))
+			{
+				$message.="Enter a Valid Organisation name. Only Alphanumerics are Allowed in Work Experience 5";
+			}
+		}
+
+		if($experienceInfo['des_5']!='')
+		{
+			if(!hasOnlyAlphabets($experienceInfo['des_5']))
+			{
+				$message.="Enter A valid Designation. Only Alphabets are Allowed in Work Experience 5.";
+			}
+		}
+
+		if($experienceInfo['per_5']!='')
+		{
+			if(!hasOnlyAlphaNumerics($experienceInfo['per_5']))
+			{
+				$message.="Enter A valid Experience Period. Only Alpha Numerics are Allowed in Work Experience 5.";
+			}
+		}
+
+		if($experienceInfo['work_5']!='')
+		{
+			if(!hasOnlyAlphaNumerics($experienceInfo['work_5']))
+			{
+				$message.="Only Alpha Numerics are allowed in Nature Of work in work Experience 5.";
+			}
+		}
+
+	
+		if($message=='')
 		{
 			$sql5 ="update fgusers3 set submit_status='1' where username='$t1'";
 		    $result4=mysql_query($sql5) or die(mysql_error());
