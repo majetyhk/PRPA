@@ -136,43 +136,83 @@ while($row = mysql_fetch_array($result3))
 	<title>Validate</title>
 	<?php
 
+	if(!isset($Full_Name=="") || !isset($gender=="") || !isset($dob=='1970-01-01')  || !isset($fname=="")  || !isset($nation="") || !isset($marital=="") || !isset($pc=="") || !isset($com=="") || !isset($pemail=="")  || !isset($Temp_Address=="") || !isset($T_District=="") || !isset($tstate=="") || !isset($T_pincode=="")  ||!isset($perm_Address=="") || !isset($P_District=="") || !isset($pstate=="") || !isset($P_pincode==""))
+	{
+		echo '<a href="forms.php">Personal Information</a> not saved. Please save the information before you submit.';
+		echo '</head> <body></body></html>'; 
+		exit();
+	}
+
+	if(!isset($univ_10) || !isset($univ_12) || !isset($univ_bd) || !isset($univ_pg) || !isset($degree_10) || !isset($degree_12) || !isset($degree_bd) || !isset($degree_pg) || !isset($marks_10) || !isset($marks_12) || !isset($marks_bd) || !isset($marks_pg) || !isset($grade_10) || !isset($grade_12) || !isset($grade_bd) || !isset($grade_pg) || !isset($year_10) || !isset($year_12)|| !isset($year_bd)|| !isset($year_pg)||!isset($bd_2) ||!isset($bd_3) ||!isset($bd_4) ||!isset($bd_5) ||!isset($bd_6) ||!isset($bd_7) ||!isset($bd_8) ||!isset($bd_agr) || !isset($bd_class) || !isset($md_1) ||!isset($md_2) ||!isset($md_3) ||!isset($md_4) ||!isset($md_agr) || !isset($md_class))
+	{
+		/*echo "<script>
+			alert('Errors in Academic Information');
+			window.location.href='forms.php';
+			</script>";*/
+		echo '<a href="forms.php">Academic Information not saved. Please save the information before you submit.</a>';
+		echo '</head> <body></body></html>';
+		exit();
+	}
+
+
+
+
 	if($Full_Name=="" || $gender=="" || ($dob=='1970-01-01')  || $fname==""  || $nation="" || $marital=="" || $pc=="" || ($com=="") || ($pemail=="")  || ($Temp_Address=="") || ($T_District=="") || ($tstate=="") || ($T_pincode=="")  ||($perm_Address=="") || ($P_District=="") || ($pstate=="") || ($P_pincode==""))
 	{
 		    
-			//echo '<a href="forms.php">Errors in Personal Information</a>';
-			echo "<script>
+			echo '<a href="forms.php">Some fields are empty in personal information. Make sure you have filled in all the required fields.</a>';
+			echo '</head> <body></body></html>';
+			/*echo "<script>
 			alert('Errors in Personal Information');
 			window.location.href='forms.php';
-			</script>";
+			</script>";*/
 			//window.location.href='forms.php';
 	}
-
-
-	/*if(!isset($univ_10) || !isset($univ_12) || !isset($univ_bd) || !isset($univ_pg) || !isset($degree_10) || !isset($degree_12) || !isset($degree_bd) || !isset($degree_pg) || !isset($marks_10) || !isset($marks_12) || !isset($marks_bd) || !isset($marks_pg) || !isset($grade_10) || !isset($grade_12) || !isset($grade_bd) || !isset($grade_pg) || !isset($year_10) || !isset($year_12)|| !isset($year_bd)|| !isset($year_pg)||!isset($bd_2) ||!isset($bd_3) ||!isset($bd_4) ||!isset($bd_5) ||!isset($bd_6) ||!isset($bd_7) ||!isset($bd_8) ||!isset($bd_agr) || !isset($bd_class) || !isset($md_1) ||!isset($md_2) ||!isset($md_3) ||!isset($md_4) ||!isset($md_agr) || !isset($md_class))
-	{*/
-	if(($univ_10=="") || ($univ_12=="") || ($univ_bd=="") || ($univ_pg=="") || ($degree_10=="") || ($degree_12=="") || ($degree_bd=="") || ($degree_pg=="") || ($marks_10=="") || ($marks_12=="") || ($marks_bd=="") || ($marks_pg=="") || ($grade_10=="") || ($grade_12=="") || ($grade_bd=="") || ($grade_pg=="") || ($year_10=="") || ($year_12=="")|| ($year_bd=="")|| ($year_pg=="")||($bd_2=="") ||($bd_3=="") ||($bd_4=="") ||($bd_5=="") ||($bd_6=="") ||($bd_7=="") ||($bd_8=="") ||($bd_agr=="") || ($bd_class=="") || ($md_1=="") ||($md_2=="") ||($md_3=="") ||($md_4=="") ||($md_agr=="") || ($md_class==""))
+	
+	else if(($univ_10=="") || ($univ_12=="") || ($univ_bd=="") || ($univ_pg=="") || ($degree_10=="") || ($degree_12=="") || ($degree_bd=="") || ($degree_pg=="") || ($marks_10=="") || ($marks_12=="") || ($marks_bd=="") || ($marks_pg=="") || ($grade_10=="") || ($grade_12=="") || ($grade_bd=="") || ($grade_pg=="") || ($year_10=="") || ($year_12=="")|| ($year_bd=="")|| ($year_pg=="")||($bd_2=="") ||($bd_3=="") ||($bd_4=="") ||($bd_5=="") ||($bd_6=="") ||($bd_7=="") ||($bd_8=="") ||($bd_agr=="") || ($bd_class=="") || ($md_1=="") ||($md_2=="") ||($md_3=="") ||($md_4=="") ||($md_agr=="") || ($md_class==""))
 	{
 		    
-			//echo '<a href="forms.php">Errors in Academic Information</a>';
+			echo 'Some Fields are empty in <a href="forms.php">Academic Information</a>';
+			echo '</head> <body></body></html>';
 			//if(!isset($univ_pg)) echo 'crap';
 			//window.location.href='forms.php';
-			echo "<script>
+			/*echo "<script>
 			alert('Errors in Academic Information');
 			window.location.href='forms.php';
-			</script>";
+			</script>";*/
 	}
 
 
-	//if(isset($Full_Name) && isset($gender) && isset($dob)  && isset($fname) && isset($nation) && isset($marital) && isset($pc) && isset($com) && isset($pemail)  && isset($Temp_Address) && isset($T_District) && isset($tstate) && isset($T_pincode)  &&isset($perm_Address) && isset($P_District) && isset($pstate) && isset($P_pincode) && isset($univ_10) && isset($univ_12) && isset($univ_bd) && isset($univ_pg) && isset($degree_10) && isset($degree_12) && isset($degree_bd) && isset($degree_pg) && isset($marks_10) && isset($marks_12) && isset($marks_bd) && isset($marks_pg) && isset($grade_10) && isset($grade_12) && isset($grade_bd) && isset($grade_pg) && isset($year_10) && isset($year_12)&& isset($year_bd)&& isset($year_pg)&&isset($bd_2) &&isset($bd_3) &&isset($bd_4) &&isset($bd_5) &&isset($bd_6) &&isset($bd_7) &&isset($bd_8) &&isset($bd_agr) && isset($bd_class) && isset($md_1) &&isset($md_2) &&isset($md_3) &&isset($md_4) &&isset($md_agr) && isset($md_class))
-	if(($Full_Name!=="") && ($gender!=="") && ($dob!=="")  && ($fname!=="") && ($nation!=="") && ($marital!=="") && ($pc!=="") && ($com!=="") && ($pemail!=="")  && ($Temp_Address!=="") && ($T_District!=="") && ($tstate!=="") && ($T_pincode!=="")  &&($perm_Address!=="") && ($P_District!=="") && ($pstate!=="") && ($P_pincode!=="") && ($univ_10!=="") && ($univ_12!=="") && ($univ_bd!=="") && ($univ_pg!=="") && ($degree_10!=="") && ($degree_12!=="") && ($degree_bd!=="") && ($degree_pg!=="") && ($marks_10!=="") && ($marks_12!=="") && ($marks_bd!=="") && ($marks_pg!=="") && ($grade_10!=="") && ($grade_12!=="") && ($grade_bd!=="") && ($grade_pg!=="") && ($year_10!=="") && ($year_12!=="")&& ($year_bd!=="")&& ($year_pg!=="")&&($bd_2!=="") &&($bd_3!=="") &&($bd_4!=="") &&($bd_5!=="") &&($bd_6!=="") &&($bd_7!=="") &&($bd_8!=="") &&($bd_agr!=="") && ($bd_class!=="") && ($md_1!=="") &&($md_2!=="") &&($md_3!=="") &&($md_4!=="") &&($md_agr!=="") && ($md_class!==""))
+	
+
+
+	/*if(isset($Full_Name) && isset($gender) && isset($dob)  && isset($fname) && isset($nation) && isset($marital) && isset($pc) && isset($com) && isset($pemail)  && isset($Temp_Address) && isset($T_District) && isset($tstate) && isset($T_pincode)  &&isset($perm_Address) && isset($P_District) && isset($pstate) && isset($P_pincode) && isset($univ_10) && isset($univ_12) && isset($univ_bd) && isset($univ_pg) && isset($degree_10) && isset($degree_12) && isset($degree_bd) && isset($degree_pg) && isset($marks_10) && isset($marks_12) && isset($marks_bd) && isset($marks_pg) && isset($grade_10) && isset($grade_12) && isset($grade_bd) && isset($grade_pg) && isset($year_10) && isset($year_12)&& isset($year_bd)&& isset($year_pg)&&isset($bd_2) &&isset($bd_3) &&isset($bd_4) &&isset($bd_5) &&isset($bd_6) &&isset($bd_7) &&isset($bd_8) &&isset($bd_agr) && isset($bd_class) && isset($md_1) &&isset($md_2) &&isset($md_3) &&isset($md_4) &&isset($md_agr) && isset($md_class))
 	{
-		$sql5 ="update fgusers3 set submit_status='1' where username='$t1'";
-	    $result4=mysql_query($sql5) or die(mysql_error());
 		echo "<script>
-			alert('Application submitted Succesfully');
-			window.location.href='thank-you.php';
+			alert('Some forms aren't saved. Please make sure you have saved all the forms.');
+			window.location.href='forms.php';
 			</script>";
+	}*/
+	else
+	{
+		if(($Full_Name!="") && ($gender!="") && ($dob!="")  && ($fname!="") && ($nation!="") && ($marital!="") && ($pc!="") && ($com!="") && ($pemail!="")  && ($Temp_Address!="") && ($T_District!="") && ($tstate!="") && ($T_pincode!="")  &&($perm_Address!="") && ($P_District!="") && ($pstate!="") && ($P_pincode!="") && ($univ_10!="") && ($univ_12!="") && ($univ_bd!="") && ($univ_pg!="") && ($degree_10!="") && ($degree_12!="") && ($degree_bd!="") && ($degree_pg!="") && ($marks_10!="") && ($marks_12!="") && ($marks_bd!="") && ($marks_pg!="") && ($grade_10!="") && ($grade_12!="") && ($grade_bd!="") && ($grade_pg!="") && ($year_10!="") && ($year_12!="")&& ($year_bd!="")&& ($year_pg!="")&&($bd_2!="") &&($bd_3!="") &&($bd_4!="") &&($bd_5!="") &&($bd_6!="") &&($bd_7!="") &&($bd_8!="") &&($bd_agr!="") && ($bd_class!="") && ($md_1!="") &&($md_2!="") &&($md_3!="") &&($md_4!="") &&($md_agr!="") && ($md_class!=""))
+		{
+			$sql5 ="update fgusers3 set submit_status='1' where username='$t1'";
+		    $result4=mysql_query($sql5) or die(mysql_error());
+			echo "<script>
+				alert('Application submitted Succesfully');
+				window.location.href='thank-you.php';
+				</script>";
+		}
+		else
+		{
+			echo "<script>
+				alert('Some Fields are empty! Please make sure you have entered all the required fields.');
+				window.location.href='forms.php';
+				</script>";
+		}
 	}
+	
 
 		
 	?>

@@ -48,7 +48,8 @@ while($row = mysql_fetch_array($result2))
   }
 //personal email!=Alternate Email
 //
-if($_POST["Full_Name"] || $_POST["gender"] || $_POST["date1"]  ||$_POST["fname"] || $_POST["Nationality"] || $_POST["Marital_status"] || $_POST["Physically_challenged"] || $_POST["community"] || $_POST["pemail"] || $_POST["aemail"] || $_POST["Temp_Address"] || $_POST["T_District"] || $_POST["T_state"] || $_POST["T_pincode"] || $_POST["T_phone_number"] ||$_POST["T_mobile_number"] || $_POST["perm_Address"] || $_POST["P_District"] || $_POST["P_state"] || $_POST["P_pincode"] || $_POST["P_phone_number"] ||$_POST["P_mobile_number"])
+
+if($_POST["Full_Name"]!="" || $_POST["gender"]!="" || $_POST["date1"] !=""  || $_POST["fname"]!="" || $_POST["Nationality"]!="" || $_POST["Marital_status"]!="" || $_POST["Physically_challenged"]!="" || $_POST["community"]!="" || $_POST["pemail"]!="" || $_POST["aemail"]!="" || $_POST["Temp_Address"]!="" || $_POST["T_District"]!="" || $_POST["T_state"]!="" || $_POST["T_pincode"]!="" || $_POST["T_phone_number"]!="" ||$_POST["T_mobile_number"]!="" || $_POST["perm_Address"]!="" || $_POST["P_District"]!="" || $_POST["P_state"]!="" || $_POST["P_pincode"]!="" || $_POST["P_phone_number"]!="" ||$_POST["P_mobile_number"]!="")
 {
 	if($_POST['date1'])
 	{
