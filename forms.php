@@ -961,7 +961,7 @@ if(!$fgmembersite->CheckLogin())
 
 	<large><u>Note</u></large><br>
 	<small><font color=red>1)Please upload only .pdf or .png files only and not exceeding 1MB.</font></small><br>
-	<small><font color=red>2)Uploaded files should be of the format application.number_filename.<br> Eg:DM14D001_SSLC.pdf <br> Eg:DM14D001_MS.pdf <br> Eg:DM14D001_CC.pdf <br> Eg:DM14D001_DC.pdf <br> Eg:DM14D001_GC.pdf <br> 
+	<small><font color=red>2)Uploaded files should be of the format application.number_filename.<br>Eg:DM14D001_DD.pdf<br /> Eg:DM14D001_SSLC.pdf <br> Eg:DM14D001_MS.pdf <br> Eg:DM14D001_CC.pdf <br> Eg:DM14D001_DC.pdf <br> Eg:DM14D001_GC.pdf <br> 
 	Eg:DM14D001_PP.png <br>
 	 Eg:DM14D001_DS.png  </font></small><br>
 	<small><font color=red>3)File name is according to the uploaded file name. </font></small><br><br>
@@ -1011,13 +1011,13 @@ if(!$fgmembersite->CheckLogin())
 	<td>
 	<?php 
 	 if (file_exists("upload/" .$applnNo."_SSLC.pdf"))
-		      {
+		    {
 		      echo $applnNo.'_SSLC.pdf';
 			 
 			  echo '<script type="text/javascript">
 			    //document.getElementById("file2").disabled=true;
 			  </script>';
-		      }
+		    }
 	 ?></td></tr>
 	 <tr><td>
 	<?php 
@@ -1205,7 +1205,7 @@ if(!$fgmembersite->CheckLogin())
 	<table align="center">
 	<tr>
 	<td><label for="place">Place:</label></td>
-	<td><input type="text" name="regplace" id="place"></td></tr>
+	<td><input type="text" required="required" name="regplace" id="place"></td></tr>
 
 	<tr><td><label for="date">Date:</label></td>
 	<td><input type="text" name="regdate" autocomplete="off" disabled='true' value="<?php echo date("d/m/Y") ?>"></td></tr>
