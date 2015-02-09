@@ -513,7 +513,7 @@ if(!$fgmembersite->CheckLogin())
 					    	District/City<font color=red>*</font> :        
 						</td>
 						<td colspan="2">
-					    	<input name=T_District type=text id=T_District size=40 value="<?php if(isset($T_District)) echo $T_District;?>" maxlength=50 onkeypress='return alphaonly(event,this)'>        
+					    	<input name=T_District type=text id=T_District size=30 value="<?php if(isset($T_District)) echo $T_District;?>" maxlength=30 onkeypress='return isAlpha(event,errorTempDistrict)'><span id="errorTempDistrict" style="color: Red; display: none">* Special Characters & integers are not allowed</span>        
 						</td>
 					</tr>
 
@@ -620,7 +620,7 @@ if(!$fgmembersite->CheckLogin())
 					    	Phone with Area Code :        
 				    	</td>
 				        <td colspan="2">
-							 +91-<input name=T_phone_number size="15" maxlength="15" type=text id=T_phone_number value="<?php if(isset($T_phone_number)) echo $T_phone_number;?>" onkeypress="return isPinCode(event)">
+							 +<input name=T_phone_number size="15" maxlength="15" type=text id=T_phone_number value="<?php if(isset($T_phone_number)) echo $T_phone_number;?>" onkeypress="return isPinCode(event)">
 					 	</td>
 				  	</tr>
 
@@ -629,7 +629,7 @@ if(!$fgmembersite->CheckLogin())
 							Mobile :        
 						</td>
 						<td colspan="2">
-				    	    +91-<input name=T_mobile_number size="10" maxlength="10" type=text id=T_mobile_number value="<?php if(isset($T_mobile_number)) echo $T_mobile_number;?>" onkeypress="return isPinCode(event)">        
+				    	    +<input name=T_mobile_number size="10" maxlength="10" type=text id=T_mobile_number value="<?php if(isset($T_mobile_number)) echo $T_mobile_number;?>" onkeypress="return isPinCode(event)">        
 				    	</td>
 				    </tr>
 
@@ -668,7 +668,7 @@ if(!$fgmembersite->CheckLogin())
 						  		District/City<font color=red>*</font> :        
 						  	</td>
 							<td colspan="2">
-								<input name=P_District type=text id=P_District size=40 value="<?php if(isset($P_District)) echo $P_District;?>" maxlength=30 >        
+								<input name=P_District type=text id=P_District size=40 value="<?php if(isset($P_District)) echo $P_District;?>" onkeypress="return isAlpha(event,errorPermDistrict)" maxlength=30 ><span id="errorPermDistrict" style="color: Red; display: none">* Special Characters & integers are not allowed</span>        
 							</td>
 						</tr>
 
@@ -772,7 +772,7 @@ if(!$fgmembersite->CheckLogin())
 							</td>
 							<td colspan="2">
 								<!--<input name=area_code type=text id=area_code size=4 maxlength=5 value=''>  --> 
-								<input name=P_phone_number type=text id=P_phone_number size=16 maxlength=17 value="<?php if(isset($P_phone_number)) echo $P_phone_number;?> "onkeypress="return isNumber(event)">        
+								+<input name=P_phone_number type=text id="P_phone_number" size="15" maxlength="15" value="<?php if(isset($P_phone_number)) echo $P_phone_number;?> "onkeypress="return isNumber(event)">        
 							</td>
 						</tr>
 
@@ -781,7 +781,7 @@ if(!$fgmembersite->CheckLogin())
 								Mobile :        
 							</td>
 							<td colspan="2">
-								<input name=P_mobile_number type=text id=P_mobile_number size=15 maxlength=15 value="<?php if(isset($P_mobile_number)) echo $P_mobile_number;?>"onkeypress="return isNumber(event)">        
+								+<input name="P_mobile_number" type="text" id="P_mobile_number" size="10" maxlength="10" value="<?php if(isset($P_mobile_number)) echo $P_mobile_number;?>"onkeypress="return isNumber(event)">        
 							</td>
 						</tr>
 
