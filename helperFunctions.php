@@ -121,6 +121,23 @@ function validateDate($rawDate,$seperator='/')
 		}
 	}
 
+function dateStringToTimestamp($dateString,$seperator='/')
+{
+	if(validateDate($dateString,$seperator))
+	{
+		$splitDate=explode($seperator,$dateString);
+		$year=$splitDate[2];
+		$month=$splitDate[1];
+		$day=$splitDate[0];
+		$timestamp = mktime(0, 0, 0, $month, $day, $year);
+		return $timestamp;
+	}
+	else
+	{
+		return false;
+	}
+}
+
 function isValidPercentage($string)
 {
 	if(preg_match('/(^[0-9]{1,2}$)|(^[0-9]{1,2}\.[0-9]{1,}$)/',$string))
@@ -155,9 +172,14 @@ function validatePersonalInfoOnSave($personalInfo)
 	//2
 	if($personalInfo['date1']!='')
 	{
-		if(!validateDate($personalInfo['date1']))
+		$currentTimestamp=time();
+		if(($dob=dateStringToTimestamp($personalInfo['date1']))==false)
 		{
 			$message.="Enter a Valid date<br/>";
+		}
+		else if($dob>=$currentTimestamp)
+		{
+			$message.="Date of Birth cant be greater than current date.<br/>";
 		}
 		/*else
 		{
