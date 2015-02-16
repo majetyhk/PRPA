@@ -361,7 +361,7 @@ function vset_validate()
 }
 function validateEmail(email)
 {
-    /*var splitted = email.match("^(.+)@(.+)$");    
+    var splitted = email.match("^(.+)@(.+)$");
     if(splitted == null) return false;
     if(splitted[1] != null )
     {
@@ -377,12 +377,8 @@ function validateEmail(email)
        if(splitted[2].match(regexp_ip) == null) return false;
       }// if
       return true;
-    }*/
-    if(!filter_var(email, FILTER_VALIDATE_EMAIL))
-    {
-      return false;
     }
-    return true;
+return false;
 }
 
 function IsCheckSelected(objValue,chkValue)

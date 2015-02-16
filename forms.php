@@ -362,6 +362,7 @@ if(!$fgmembersite->CheckLogin())
 		<div>
 		  	<h2>Personal Info</h2>
 		  	<br>
+		  	<center><strong>Please save your actions before you go to next TAB<br /></strong></center>
 			<form name="form1" method="post" action="personal_info.php">
 		   
 				<table align="center" class="table" cellspacing="6" width="85%">
@@ -796,6 +797,7 @@ if(!$fgmembersite->CheckLogin())
 		<div >
 			<h2 >Academic Info</h2>
 			<br>
+			<center><strong>Please save your actions before you go to next TAB</strong></center>
 			<form name="form3" method="post" action="academic_info.php">
 			 	<p style="text-align:center;font-family:arial;color:black;font-size:24px;">Qualifications and Experience.</p>
 			 	<!--<a style="text-align:left;font-family:arial;color:red;font-size:20px;" href='qualification.html'>Fill the details of qualifications</a><br>-->
@@ -847,7 +849,7 @@ if(!$fgmembersite->CheckLogin())
 		                
 		            	<td width="9%">
 			            	<select name="grade_12" id="grade_12" class="validate[required]">
-				               	<option value="0">-- Select --</option>
+				               	
 					    		<option value="MAR-100"<?php if(isset($grade_12)&&$grade_12=="MAR-100") echo "selected"; ?>>% out of 100</option>
 								<option value="CGP-10"<?php if(isset($grade_12)&&$grade_12=="CGP-10") echo "selected"; ?>>CGPA out of 10</option>
 								<option value="CPI-4"<?php if(isset($grade_12)&&$grade_12=="CPI-4") echo "selected"; ?>>CPI out of 4</option>
@@ -864,7 +866,7 @@ if(!$fgmembersite->CheckLogin())
 		                <td width="15%"><input class="validate[required]" type="text" name="bd_degree" id="bd_degree" value="<?php if(isset($degree_bd)) echo $degree_bd;?>" style="width:93%" maxlength="45" title="45 Characters" onkeypress="return isAlpha(event,errorBachelorDegree);" /><span id="errorBachelorDegree" style="color: Red; display: none">* Special Characters & integers are not allowed</span></td>
 						<td width="9%">
 							<select name="bd_grade" id="bd_grade" class="validate[required]">
-			                    <option value="0">-- Select --</option>
+			                   
 			        			<option value="MAR-100"<?php if(isset($grade_bd)&&$grade_bd=="MAR-100") echo "selected"; ?>>% out of 100</option>
 				  				<option value="CGP-10"<?php if(isset($grade_bd)&&$grade_bd=="CGP-10") echo "selected"; ?>>CGPA out of 10</option>	
 			        			<option value="CPI-4"<?php if(isset($grade_bd)&&$grade_bd=="CPI-4") echo "selected"; ?>>CPI out of 4</option>
@@ -880,7 +882,6 @@ if(!$fgmembersite->CheckLogin())
 		                <td width="15%"><input type="text" name="pg_degree" id="pg_degree" value="<?php if(isset($degree_pg)) echo $degree_pg;?>" style="width:93%" maxlength="45" title="45 Characters" onkeypress="return isAlpha(event,errorMastersDegree);" /><span id="errorMastersDegree" style="color: Red; display: none">* Special Characters & integers are not allowed</span></td>
 		                <td width="9%">
 			                <select name="pg_grade" id="pg_grade">
-			                    <option value="0">-- Select --</option>
 			    				<option value="MAR-100"<?php if(isset($grade_pg)&&$grade_pg=="MAR-100") echo "selected"; ?>>% out of 100</option>
 			  					<option value="CGP-10"<?php if(isset($grade_pg)&&$grade_pg=="CGP-10") echo "selected"; ?>>CGPA out of 10</option>
 			    				<option value="CPI-4"<?php if(isset($grade_pg)&&$grade_pg=="CPI-4") echo "selected"; ?>>CPI out of 4</option>
@@ -896,7 +897,7 @@ if(!$fgmembersite->CheckLogin())
 		                <td width="15%"><input type="text" name="o_degree" id="o_degree" value="<?php if(isset($degree_o)) echo $degree_o;?>" style="width:93%" maxlength="45" title="45 Characters" onkeypress="return isAlpha(event,errorOthersDegree);" /><span id="errorOthersDegree" style="color: Red; display: none">* Special Characters & integers are not allowed</span></td>
 		                <td width="9%">
 			                <select name="o_grade" id="o_grade">
-						    	<option value="0">-- Select --</option>
+						    	
 			    				<option value="MAR-100"<?php if(isset($grade_o)&&$grade_o=="MAR-100") echo "selected"; ?>>% out of 100</option>
 								<option value="CGP-10"<?php if(isset($grade_o)&&$grade_o=="CGP-10") echo "selected"; ?>>CGPA out of 10</option>	
 			    				<option value="CPI-4"<?php if(isset($grade_o)&&$grade_o=="CPI-4") echo "selected"; ?>>CPI out of 4</option>
@@ -1024,6 +1025,7 @@ if(!$fgmembersite->CheckLogin())
 		<div>  
 			<h2>Enclosures</h2>
 			<div align="left">
+				<center><strong>Please save your actions before you go to next TAB</strong></center>
 				<form action="upload.php" method="post"
 					enctype="multipart/form-data">
 					<br>
