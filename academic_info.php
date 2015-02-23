@@ -52,11 +52,11 @@ if(!$fgmembersite->CheckLogin())
 			window.location.href='forms.php';
 			</script>";
 	}
-	else {
-	 echo "<script>alert('Invalid input please check again');
+	else
+	{
+		 echo "<script>alert('Invalid input please check again');
 			window.location.href='forms.php';
 			</script>";
 	}
-
 ?>
 </html>

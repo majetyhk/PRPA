@@ -1,14 +1,13 @@
 <?PHP
-include('db.php');
-require_once("./include/membersite_config.php");
-
-if(!$fgmembersite->CheckLogin())
-{
-    $fgmembersite->RedirectToURL("login.php");
-    exit;
-}
-
+	include('db.php');
+	require_once("./include/membersite_config.php");
+	if(!$fgmembersite->CheckLogin())
+	{
+	    $fgmembersite->RedirectToURL("login.php");
+	    exit;
+	}
 ?>
+
 <!DOCTYPE html">
 <html>
 	<head >
@@ -28,7 +27,8 @@ if(!$fgmembersite->CheckLogin())
 
 		<style type="text/css">
 			/* BeginOAWidget_Instance_2138522: #TabbedPanels2 */
-			html{
+			html
+			{
 				background-color:#EEE;
 			}
 			/* TabbedPanelsTabGroup */
@@ -210,21 +210,26 @@ if(!$fgmembersite->CheckLogin())
 		$resultQuery=mysql_query($sqlQuery) or die(mysql_error());
 		$row = mysql_fetch_array($resultQuery);
 		$resultVal=$row[0];
-		if($resultVal==1){
+		if($resultVal==1)
+		{
 			echo '<script type="text/javascript">window.location="thank-you.php";</script>';
 		}
 		print '<center><p>Welcome '.'<strong>'.$userName.'</strong>'.'</p></center>';
 		$sqlQuery2="select id_user from fgusers3 where username='$userName'";
 		$resultQuery2=mysql_query($sqlQuery2) or die(mysql_error());
 		$applnNo='';
-		while($row = mysql_fetch_array($resultQuery2)){
-			if($row['id_user'] >= 1 && $row['id_user'] < 10){
+		while($row = mysql_fetch_array($resultQuery2))
+		{
+			if($row['id_user'] >= 1 && $row['id_user'] < 10)
+			{
 				$applnNo='DM14D00'.$row['id_user'];
 			}
-			else if($row['id_user'] >= 10 && $row['id_user'] < 100){
+			else if($row['id_user'] >= 10 && $row['id_user'] < 100)
+			{
 				$applnNo='DM14D0'.$row['id_user'];
 			}
-			else{
+			else
+			{
 				$applnNo='DM14D'.$row['id_user'];
 			}
 		}
@@ -235,7 +240,9 @@ if(!$fgmembersite->CheckLogin())
 		$sql1 = "select * from qualifications where user_key='$userName'";
 		 // $sql1="insert into personal_info(App_no) values ('$temp')";
 		$result1=mysql_query($sql1) or die(mysql_error());
-		if(!$result1||mysql_num_rows($result1)<1){//echo 'empty result';
+		if(!$result1||mysql_num_rows($result1)<1)
+		{
+			//echo 'empty result';
 		}
 		else
 			while($row = mysql_fetch_array($result1))

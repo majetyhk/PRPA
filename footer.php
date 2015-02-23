@@ -1,5 +1,5 @@
-</div>
-</div>
-<?php include 'copyright.php' ?>
-</body>
+<html>
+	<body>
+		<?php include 'copyright.php' ?>
+	</body>
 </html>

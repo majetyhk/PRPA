@@ -3,6 +3,4 @@
 include 'header3.php'; 
 ?>
 
-
-
 <?php include 'copyright.php' ?>
