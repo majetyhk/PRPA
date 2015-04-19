@@ -194,7 +194,7 @@ for ($i=0; $i<=7; $i++)
   if($k==0)
   {
   	echo "<script>
-			alert('NO files found. Please upload the files !!!');
+			alert('No new files added.');
 			window.location.href='forms.php';
 			</script>";
   }

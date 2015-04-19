@@ -2,7 +2,7 @@
 Registration/Login Form by html-form-guide.com
 You can customize all the aspects of the form in this style sheet
 */
-
+/*
 #fg_membersite fieldset
 {
    width: 230px;
@@ -84,8 +84,8 @@ border-radius: 10px;
 {
    margin-top:8px;
    margin-bottom: 10px;
-}
-
+}*/
+/*
 #fg_membersite .error
 {
    font-family: Verdana, Arial, sans-serif; 
@@ -124,7 +124,7 @@ border-radius: 10px;
    color:#333;   
 }
 
-/* spam_trap: This input is hidden. This is here to trick the spam bots*/
+ spam_trap: This input is hidden. This is here to trick the spam bots
 #fg_membersite .spmhidip
 {
    display:none;
@@ -163,4 +163,4 @@ padding-bottom:10px;
    font-size: 1.5em;
    font-weight:bold;
    color:#333;
-}
+}*/

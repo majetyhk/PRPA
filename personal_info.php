@@ -72,10 +72,10 @@ if($_POST["Full_Name"]!="" || $_POST["gender"]!="" || $_POST["date1"] !=""  || $
 	else{$age=0;} 
     $sqlq="delete from personal_info where user_name = '$t1'";
     $res=mysql_query($sqlq) or die(mysql_error());	
-    $dob = date("Y-m-d", strtotime($_POST['date1']));
+    $dob = ($_POST['date1']);
     $sql="insert into  personal_info(user_name,App_no,Full_Name,gender,dob,age,fname,Nationality,Marital_status,Physically_challenged,community,Minority,pemail,aemail,Temp_Address,T_District,T_state,T_pincode,T_phone_number,T_mobile_number,perm_Address,P_District,P_state,P_pincode,P_phone_number,P_mobile_number) values 
 	
-('$t1','$applicationNumber','$_POST[Full_Name]' , '$_POST[gender]' , '$dob' , '$age' ,'$_POST[fname]' , '$_POST[Nationality]' , '$_POST[Marital_status]' , '$_POST[Physically_challenged]' , '$_POST[community]' ,'$_POST[Minority]' , '$_POST[pemail]' , '$_POST[aemail]','$_POST[Temp_Address]' , '$_POST[T_District]' , '$_POST[T_state]' , '$_POST[T_pincode]', '$_POST[T_phone_number]' , '$_POST[T_mobile_number]' , '$_POST[perm_Address]' , '$_POST[P_District]' , '$_POST[P_state]' , '$_POST[P_pincode]' , '$_POST[P_phone_number]' , '$_POST[P_mobile_number]')";
+('$t1','$applicationNumber','$_POST[Full_Name]' , '$_POST[gender]' , '$dob' , '$age' ,'$_POST[fname]' , '$_POST[Nationality]' , '$_POST[Marital_status]' , '$_POST[Physically_challenged]' , '$_POST[community]' ,'$_POST[Minority]' , '$_POST[pemail]' , '$_POST[aemail]','$_POST[Temp_Address]' , '$_POST[T_District]' , '$_POST[T_state]' , '$_POST[T_pincode]', '$_POST[T_phone_number]' , '$_POST[T_mobile_number]' , '$_POST[perm_Address]' , '$_POST[P_District]' , '$_POST[P_state]' , '$_POST[P_pincode]' , $_POST[P_phone_number] , '$_POST[P_mobile_number]')";
     $result=mysql_query($sql) or die(mysql_error());
     $message=validatePersonalInfoOnSave($_POST);	
     if(($message)=='')

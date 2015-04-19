@@ -12,9 +12,6 @@
 </ul>
 	
 <div id="page" class="container">
-<div id="logo">
-		<img src="images/logo.jpg" width="180" height="150" alt="IIITD&M logo" />
-	</div>
 	<div id="content">
 		<div id="onecolumn">
 			<p><img src="images/institute.jpg" width="580" height="300" alt="" /></p>
@@ -42,27 +39,20 @@ The Institute offers Ph.D programs in the core ares of engineering namely electr
 			<h2>Latest news</h2>
 			<ul class="list-style1">
 				<li class="first">
-					<p>Candidates selected for Test/Interview. </p>
-					<p><a href="#" class="link-style">Read More</a></p>
+					<p>Candidates selected for Test/Interview.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" class="link-style">Read More</a></p>
 				</li>
 				<li>
-					<p>Research@IIITDM </p>
-					<p><a href="#" class="link-style">Read More</a></p>
+					<p>Research@IIITDM.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" class="link-style">Read More</a></p>
 				</li>
 			</ul>
 		</div>
-		<!--
-		<div id="sbox2">
-			<h2>Testimonials</h2>
-			<p class="testimonial">.</p>
-			<div class="author"><img src="images/pic.jpg" width="80" height="80" alt="" /><span class="name">Sadagopan</span><span class="position">Assistant Proffessor</span><span>IIIT DM, Kancheepuram</span>
-
-		</div>
-		--!>
+		
 		</div>
 		
 	</div>
 </div>
-    <?php include 'copyright.php' ?>
+    <div id="index_copyright" class="container center">
+	<p>Copyright (c) 2013 <a href="http://www.iiitdm.ac.in">IIITD&M Kancheepuram</a>. All rights reserved. </p>
+	</div>
 </body>
 </html>

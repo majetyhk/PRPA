@@ -1,6 +1,7 @@
 <?PHP
 include('db.php');
 require_once("./include/membersite_config.php");
+require_once("./helperFunctions.php");
 
 if(!$fgmembersite->CheckLogin())
 {
@@ -15,7 +16,7 @@ $result1=mysql_query($sql1) or die(mysql_error());
 if(!$result1||mysql_num_rows($result1)<1){//echo 'empty result';
 }
 else
-while($qualificationsInfo = mysql_fetch_array($result1))
+($qualificationsInfo = mysql_fetch_array($result1));
 {
 	$univ_10 = $qualificationsInfo['10_univ'];
 	$univ_12 = $qualificationsInfo['12_univ'];
@@ -70,7 +71,7 @@ if(!$result2||mysql_num_rows($result2)<1){
 }
 else
 {
-	while($experienceInfo = mysql_fetch_array($result2))
+	($experienceInfo = mysql_fetch_array($result2));
   	{
 		$org_1 = $experienceInfo['org_1'];
 		$org_2 = $experienceInfo['org_2'];
@@ -97,9 +98,10 @@ else
 	
 		
 $sql3 = "select * from personal_info where user_name='$t1'";
-
+//echo $sql3;
 $result3=mysql_query($sql3) or die(mysql_error());
-while($personalInfo = mysql_fetch_array($result3))
+//var_dump($result3);
+$personalInfo = mysql_fetch_array($result3);
 {
 	$Full_Name = $personalInfo['Full_Name'];
 	$gender = $personalInfo['gender'];
@@ -203,7 +205,8 @@ while($personalInfo = mysql_fetch_array($result3))
 	//2
 	
 		$currentTimestamp=time();
-		if(($dob=dateStringToTimestamp($personalInfo['date1']))==false)
+		//var_dump($personalInfo);
+		if(($dob=dateStringToTimestamp($personalInfo['dob']))==false)
 		{
 			$message.="Enter a Valid date\\n";
 		}

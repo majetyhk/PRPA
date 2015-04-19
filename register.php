@@ -1,111 +1,234 @@
+<?PHP
+session_start();
+
+include_once('QOB/qob.php');
+include_once('backendFunctions.php');
+
+
+ if(isset($_SESSION['register']))
+  {
+    RedirectToURL("forms.php");
+  }
+  else
+  {
+    if(isset($_POST['submit']))
+    {
+      //displayAlert("Post Value Set");
+      $conObj = new QoB();
+      $emailAddress = $_POST['emailAddress'];
+      $discipline = $_POST['discipline'];
+      $modeOfRegistration = $_POST['modeOfRegistration'];
+     
+      $password = $_POST['password'];
+      $confirmPassword = $_POST['confirmPassword'];
+      if($password==$confirmPassword)
+      {
+        $passwordHash=hash("sha512",$password.PASSSALT);
+      }
+      else
+      {
+        displayAlert("Entered Password and Confirm Password doesn't match.");
+      }
+      
+      $getMailSQL = "SELECT emailAddress FROM registered_users WHERE emailAddress = ?";
+      $result1 = $conObj->fetchAll($getMailSQL,false);
+      if($conObj->error == "")
+      {
+        if($result1 != "")
+        {
+          // displayAlert("Fetched Something");
+          if($result1['emailConfirmationStatus']!=1)
+          {
+            echo '<script>alert("Your Email is not yet confirmed. To resend confirmation mail click on Resend Confirmation Mail?")</script>';
+          }
+          else
+          {
+              displayAlert("Your Email is already registered.");
+          }
+        }
+        else
+        {
+          $insertUserSQL = "INSERT INTO registered_users(emailAddress,password,discipline,mode) values($emailAddress,$passwordHash,$discipline,$modeOfRegistration)";
+          $_SESSION['register']=$_POST['regsiter'];
+          $_SESSION['applicationNo']=getAppNoPrefix().$_result1['userId'];
+          RedirectToURL("forms.php");
+        }
+      }
+      else
+      {
+        echo "Database Error. Please Try Again.".$conObj->error;
+      }
+    }
+  }
+?>
+<!--****************************************************************-->
+
 <!--
 ************************************************************************
-register.php : Resister users for further login
+register.php : Register users for further login
 
-Inputs :    Your Full Name 
-            Email Address  
-            UserName  
-            Password  
+Inputs :    Email Address  
+            Password
+            Confirm Password  
 Dropdowm :  Discipline
             Mode of Registration
 Outputs :   NIL  
 Buttons :   Submit
-            Generate (Generates random password)
-            Show (Shows password)
-            Mask (Hides password)
+            Resend Confirmation Mail
 ************************************************************************
 -->
 
-<!--********************************SUBMIT******************************-->
-<?PHP
-require_once("./include/membersite_config.php");
-
-if(isset($_POST['submitted']))
-{
-   if($fgmembersite->RegisterUser())
-   {
-        $fgmembersite->RedirectToURL("thank-you.html");
-   
-}}
-?>
-<!--********************************************************************-->
-
-<!DOCTYPE html>
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
     <head>
-        <meta http-equiv='Content-Type' content='text/html; charset=utf-8'/>
-        <title>Contact us</title>
-        <link rel="STYLESHEET" type="text/css" href="style/fg_membersite.css" />
-        <script type='text/javascript' src='scripts/gen_validatorv31.js'></script>
-        <link rel="STYLESHEET" type="text/css" href="style/pwdwidget.css" />
-        <script src="scripts/pwdwidget.js" type="text/javascript"></script>      
+          <meta http-equiv='Content-Type' content='text/html; charset=utf-8'/>
+          <!--AUTHORS-->
+          <meta name="author" content="Kuldeep Gunta">
+          <meta name="author" content="Deepanshu">
+          <meta name="author" content="Majety Hari Krishna">
+          <meta name="author" content="Gantasala Hemanth">
+          <!--AUTHORS-->
+
+          <title>Register</title>
+          <!-- <link rel="STYLESHEET" type="text/css" href="style/fg_membersite.css" /> -->
+          <!-- Fontawesome CSS -->
+          <link rel="stylesheet" href="css/font-awesome.min.css">
+          <link href="default.css" rel="stylesheet" type="text/css" media="all" />
+          <!-- Matrialize CSS -->
+          <link rel="stylesheet" type="text/css" href="css/materialize.min.css" />
+
+          <!-- JQUERY JS-->
+          <script type="text/javascript" src="js/jquery-2.1.3.min.js"></script>
+
+          <!-- Materialize JS -->
+          <script type="text/javascript" src="js/materialize.min.js"></script>
+
+          <!--<script type='text/javascript' src='scripts/gen_validatorv31.js'></script>-->
+    
     </head>
 
+    <!--*********************NAVIGATION BAR****************************-->
     <body>
-        <div id='fg_membersite'>
-            <!--****************************************REGISTER FORM************************************ -->
-            <form id='register' action='<?php echo $fgmembersite->GetSelfScript(); ?>' method='post' accept-charset='UTF-8'>
-                <fieldset >
-                <legend>Register</legend>
+      <!-- Dropdown Structure -->
+      <?php include_once("menu.php"); ?>
+      
+    <!--***************************************************************-->
 
-                <input type='hidden' name='submitted' id='submitted' value='1'/>
-                <div class='short_explanation'>* required fields</div>
-                <input type='text'  class='spmhidip' name='<?php echo $fgmembersite->GetSpamTrapInputName(); ?>' />
-                <div><span class='error'><?php echo $fgmembersite->GetErrorMessage(); ?></span></div>
+    
+    <div id="registerPage" class="container">
+      <!--***********************LOGO**********************************-->
+     <!--  <div id="logo">
+        <img src="images/iiitdm.svg" width="180" height="180" alt="IIITD&M logo" />
+      </div> -->
+      <!--*************************************************************-->
+      
+      <!--********************REGISTER FORM*****************************-->
+      <div >
+        <form id='register' method='POST' action="register.php" accept-charset='UTF-8'>
+            <div id="loghead" class="center">Register</div>
+            <!-- <input type='hidden' name='submitted' id='submitted' value='1'/> -->
+              
+              <div id="emailAddress" class="input-field">
+                <i class="mdi-action-account-circle prefix"></i>
+                <input type="email" name='emailAddress' id='emailAddress' maxlength="50">
+                <label for='username' >Email</label>
+                <span id='login_username_errorloc' class='error'></span>
+              </div>
 
-                <div class='container'>
-                    <label for='name' >Your Full Name*: </label><br/>
-                    <input type='text' name='name' id='name' value='<?php echo $fgmembersite->SafeDisplay('name') ?>' maxlength="50" pattern='/[A-Za-z]+/' /><br/>
-                    <span id='register_name_errorloc' class='error'></span>
-                </div>
+              <div id="password" class="input-field">
+                <i class="mdi-action-lock-outline prefix"></i>
+                <input type="password" name='password' id='password' maxlength="50" />
+                <label for='password' >Password</label>
+                <span id='login_password_errorloc' class='error'></span>
+              </div>
 
-                <div class='container'>
-                    <label for='email' >Email Address*:</label><br/>
-                    <input type='text' name='email' id='email' value='<?php echo $fgmembersite->SafeDisplay('email')?>' maxlength="50" /><br/>
-                    <span id='register_email_errorloc' class='error'></span>
-                </div>
+              <div id="confirmPassword" class="input-field">
+                <i class="mdi-action-https prefix"></i>
+                <input type="password" name='confirmPassword' id='confirmPassword' maxlength="50" />
+                <label for='confirmPassword' >Confirm Password</label>
+                <span id='login_password_errorloc' class='error'></span>
+              </div>
 
-                <div class='container'>
-                    <label for='username' >UserName*:</label><br/>
-                    <input type='text' name='username' id='username' value='<?php echo $fgmembersite->SafeDisplay('username') ?>' maxlength="50" /><br/>
-                    <span id='register_username_errorloc' class='error'></span>
-                </div>
+              <div name="discipline" id="disciplineId" class="input-field col s12">
+                <select>
+                  <option value="" disabled selected>Choose your discipline</option>
+                  <option value="Computer Engineering">Computer Engineering</option>
+                  <option value="Electronics">Electronics</option>
+                  <option value="Mechanical">Mechanical</option>
+                  <option value="Mathematics">Maths</option>
+                  <option value="Physics">Physics</option>
+                </select>
+                <label>Discipline</label>
+              </div>
 
-                <div class='container' style='height:80px;'>
-                    <label for='password' >Password*:</label><br/>
-                    <div class='pwdwidgetdiv' id='thepwddiv' ></div>
-                    <noscript>
-                    <input type='password' name='password' id='password' maxlength="50" />
-                    </noscript>    
-                    <div id='register_password_errorloc' class='error' style='clear:both'></div>
-                </div>
+              <div name="modeOfRegistration" id="modeOfRegistrationId" class="input-field col s12">
+                <select>
+                  <option value="" disabled selected>Choose your Mode of Registration</option>
+                  <option value="httra">Regular HTTRA</option>
+                  <option value="nhttra">Regular NHTTRA</option>
+                  <option value="internal">Internal</option>
+                  <option value="internal">External</option>
+                </select>
+                <label>Mode of registration</label>
+              </div>
 
-                <div class='container'>
-                    <input type='submit' name='Submit' value='Submit' />
-                </div>
+              <!--*****************************SUBMIT BUTTON*************************-->
+              <div id="submit_button" class="center"><button class="waves-effect waves-light btn-large" type='submit' name='submit' value='Submit' >Submit<i class="mdi-content-send right"></i></button></div>
+              <!--*******************************************************************-->
 
-                </fieldset>
-            </form>
-            <!--************************************************************************************************************8-->
-            <!-- client-side Form Validations:
-            Uses form validation script from JavaScript-coder.com-->
+            <div class='short_explanation'><a href='reset-pwd-req.php'>Resend Confirmation Mail?</a></div>
+        </form>
+        <!--*************************************************************-->
 
-            <!--****************************VALIDATION*********************************-->
-            <script type='text/javascript'>
-                var pwdwidget = new PasswordWidget('thepwddiv','password');
-                pwdwidget.MakePWDWidget();
-                var frmvalidator  = new Validator("register");
-                frmvalidator.EnableOnPageErrorDisplay();
-                frmvalidator.EnableMsgsTogether();
-                frmvalidator.addValidation("name","req","Please provide your name");
-                frmvalidator.addValidation("name","alpha","Please provide a valid name");
-                frmvalidator.addValidation("email","req","Please provide your email address");
-                //frmvalidator.addValidation("email","email","Please provide a valid email address");
-                frmvalidator.addValidation("username","req","Please provide a username");
-                frmvalidator.addValidation("password","req","Please provide a password");
-            </script>
-            <!--************************************************************************-->
-
-        </div>
+      </div>
+    </div>
     </body>
+  <!--*****************************FOOTER********************************-->
+  <div id="index_copyright" class="container center">
+  <p>Copyright (c) 2013 <a href="http://www.iiitdm.ac.in">IIITD&M Kancheepuram</a>. All rights reserved. </p>
+  </div>
+  <!--*******************************************************************-->
 </html>
+
+<script type="text/javascript">
+$(window, document, undefined).ready(function() {
+
+
+  $('select').material_select();
+
+  $('input').blur(function() {
+    var $this = $(this);
+    if ($this.val())
+      $this.addClass('used');
+    else
+      $this.removeClass('used');
+  });
+
+  var $ripples = $('.ripples');
+
+  $ripples.on('click.Ripples', function(e) {
+
+    var $this = $(this);
+    var $offset = $this.parent().offset();
+    var $circle = $this.find('.ripplesCircle');
+
+    var x = e.pageX - $offset.left;
+    var y = e.pageY - $offset.top;
+
+    $circle.css({
+      top: y + 'px',
+      left: x + 'px'
+    });
+
+    $this.addClass('is-active');
+
+  });
+
+  $ripples.on('animationend webkitAnimationEnd mozAnimationEnd oanimationend MSAnimationEnd', function(e) {
+    $(this).removeClass('is-active');
+  });
+
+  $(".dropdown-button").dropdown();
+
+});
+</script>

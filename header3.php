@@ -6,20 +6,17 @@
 <?php include 'header.php' ?>
 </head>
 <body>
-    <ul id="nav">
-	<?php include 'menu.php' ?>	
-	</ul>
+
+<?php include 'menu.php' ?>	
+	
 <div id="page" class="container">
-	<div id="logo">
-		<img src="images/logo.jpg" width="180" height="150" alt="" />
-	</div>
     <div id="content">
 		<div id="onecolumn">
 			
-			
+		</div>
+	</div>
+</div>
 
 	
-<!--<div id="page" class="container">
-	<div id="content">
-		<div id="onecolumn">-->
+
 			

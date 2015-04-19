@@ -73,18 +73,22 @@ function followsRegex($regex,$string)
 	}
 }
 
-function validateDate($rawDate,$seperator='/')
+function validateDate($rawDate,$seperator='-')
 	{
+		//var_dump($rawDate);
 		$ndate=explode($seperator,$rawDate);
 		//var_dump($ndate);
-		$currentYear=date('Y',time());
+		$currentYear=(int)date('Y',time());
 		$acceptableMinimumAge=15;
 		$acceptableInputYear=$currentYear-$acceptableMinimumAge;
+		$ndate[0]=(int)$ndate[0];
+		$ndate[1]=(int)$ndate[1];
+		$ndate[2]=(int)$ndate[2];
 		if(in_array('',$ndate))
 		{
 			return false;
 		}
-		if($ndate[2]<$acceptableInputYear)
+		if($ndate[2]>$acceptableInputYear)
 		{
 			return false;
 		}
@@ -93,7 +97,7 @@ function validateDate($rawDate,$seperator='/')
 			$daysArray=[31,29,31,30,31, 30,31,31,30,31, 30,31];
 			if($ndate[1]>=1&&$ndate[1]<=12)
 			{
-				if($ndate[0]>=0&&$ndate[0]<=$daysArray[$ndate[1]-1])
+				if($ndate[0]>0&&$ndate[0]<=$daysArray[$ndate[1]-1])
 				{
 					return true;
 				}
@@ -112,7 +116,7 @@ function validateDate($rawDate,$seperator='/')
 			$daysArray=[31,28,31,30,31, 30,31,31,30,31, 30,31];
 			if($ndate[1]>=1&&$ndate[1]<=12)
 			{
-				if($ndate[0]>=0&&$ndate[0]<=$daysArray[$ndate[1]-1])
+				if($ndate[0]>0&&$ndate[0]<=$daysArray[$ndate[1]-1])
 				{
 					return true;
 				}
@@ -128,7 +132,7 @@ function validateDate($rawDate,$seperator='/')
 		}
 	}
 
-function dateStringToTimestamp($dateString,$seperator='/')
+function dateStringToTimestamp($dateString,$seperator='-')
 {
 	$isValidDate=validateDate($dateString,$seperator);
 	//var_dump($isValidDate);
@@ -250,7 +254,7 @@ function validatePersonalInfoOnSave($personalInfo)
 		$count++;
 	}*/
 
-	if($personalInfo['T_pincode']!='')
+	if(trim($personalInfo['T_pincode'])!='')
 	{
 		if(!hasOnlyCharacters('0-9-',$personalInfo['T_pincode']))
 		{
@@ -262,7 +266,7 @@ function validatePersonalInfoOnSave($personalInfo)
 		}*/
 	}
 
-	if($personalInfo['T_phone_number']!='')
+	/*if(trim($personalInfo['T_phone_number'])!='')
 	{
 
 		if(!hasOnlyNumbers($personalInfo['T_phone_number']))
@@ -273,9 +277,9 @@ function validatePersonalInfoOnSave($personalInfo)
 		{
 			$count++;
 		}*/
-	}
+	//}
 
-	if($personalInfo['T_mobile_number']!='')
+	if(trim($personalInfo['T_mobile_number'])!='')
 	{
 		if(!hasOnlyNumbers($personalInfo['T_mobile_number']))
 		{
@@ -292,7 +296,7 @@ function validatePersonalInfoOnSave($personalInfo)
 		$count++;
 	}*/
 
-	if($personalInfo['P_pincode']!='')
+	if(trim($personalInfo['P_pincode'])!='')
 	{
 		if(!hasOnlyCharacters('0-9-',$personalInfo['P_pincode']))
 		{
@@ -304,7 +308,7 @@ function validatePersonalInfoOnSave($personalInfo)
 		}*/
 	}
 
-	if($personalInfo['P_phone_number']!='')
+/*	if($personalInfo['P_phone_number']!='')
 	{
 		if(!hasOnlyNumbers($personalInfo['P_phone_number']))
 		{
@@ -314,7 +318,7 @@ function validatePersonalInfoOnSave($personalInfo)
 		{
 			$count++;
 		}*/
-	}
+	//}
 
 	if($personalInfo['P_mobile_number']!='')
 	{
@@ -439,7 +443,7 @@ function validateQualificationsInfoOnSave($qualificationsInfo){
 		}
 	}
 	/**************   Other degree validation  ********************/
-	if(trim($qualificationsInfo["o_univ"])!=''){
+/*	if(trim($qualificationsInfo["o_univ"])!=''){
 		$o_univName = $qualificationsInfo["o_univ"];
 		if(!hasOnlyAlphabets($o_univName)){
 			$message = $message."Enter the valid others Degree University name. Only Alphabhets.\\n";
@@ -465,9 +469,9 @@ function validateQualificationsInfoOnSave($qualificationsInfo){
 		if(!hasOnlyNumbers($passYear_o)){
 			$message = $message."Enter valid year of passsing for other.\\n";
 		}
-	}
+	}*/
 	/************* B.tech CGPA validation *************/
-	if($qualificationsInfo["bd_1"]!=''){
+/*	if($qualificationsInfo["bd_1"]!=''){
 		$bd_cgpa1 = $qualificationsInfo["bd_1"];
 		if(!isValidPercentage($bd_cgpa1)){
 			$message = $message."Enter valid percentage for B.E/B.tech I sem.\\n";
@@ -526,14 +530,14 @@ function validateQualificationsInfoOnSave($qualificationsInfo){
 		if(!isValidPercentage($bd_cgpa1)){
 			$message = $message."Enter valid percentage for B.E/B.tech X sem.\\n";
 		}
-	}
-	if($qualificationsInfo["bd_agr"]!=''){
+	}*/
+/*	if($qualificationsInfo["bd_agr"]!=''){
 		$bd_cgpaagr = $qualificationsInfo["bd_agr"];
 		if(!isValidPercentage($bd_cgpaagr)){
 			$message = $message."Enter valid aggregate percentage for B.E/B.tech.\\n";
 		}
-	}
-	if(trim($qualificationsInfo["bd_class"])!=''){
+	}*/
+/*	if(trim($qualificationsInfo["bd_class"])!=''){
 		$bd_agrclass = $qualificationsInfo["bd_class"];
 		if(!hasOnlyAlphaNumerics($bd_agrclass)){
 			$message = $message."Enter valid class for B.E/B.tech.\\n";
@@ -562,8 +566,8 @@ function validateQualificationsInfoOnSave($qualificationsInfo){
 		if(!isValidPercentage($md_cgpa4)){
 			$message = $message."Enter valid aggregate percentage for M.E/M.tech.\\n";
 		}
-	}
-	if($qualificationsInfo["md_agr"]!=''){
+	}*/
+/*	if($qualificationsInfo["md_agr"]!=''){
 		$md_cgpaagr = $qualificationsInfo["md_agr"];
 		if(!isValidPercentage($md_cgpaagr)){
 			$message = $message."Enter valid aggregate percentage for M.E/M.tech.\\n";
@@ -574,7 +578,7 @@ function validateQualificationsInfoOnSave($qualificationsInfo){
 		if(!hasOnlyAlphaNumerics($md_agrClass)){
 			$message = $message."Enter valid aggregate percentage for M.E/M.tech.\\n";
 		}
-	}
+	}*/
 
 
 		return $message;
